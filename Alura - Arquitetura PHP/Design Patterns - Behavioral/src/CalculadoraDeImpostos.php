@@ -10,7 +10,7 @@ class CalculadoraDeImpostos
             case "ICMS":
                 return $orcamento->valor * 0.1;
             case "ISS":
-                return $orcamento->valor * 0.6;
+                return $orcamento->valor * 0.06;
         }
     }
 }
