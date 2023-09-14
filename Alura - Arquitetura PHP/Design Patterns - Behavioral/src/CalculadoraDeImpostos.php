@@ -2,15 +2,13 @@
 
 namespace Alura\DesignPattern;
 
+use Alura\DesignPattern\Impostos\Imposto;
+
 class CalculadoraDeImpostos
 {
-    public function calcula(Orcamento $orcamento, string $nomeImposto)
+    public function calcula(Orcamento $orcamento, Imposto $imposto)
     {
-        switch ($nomeImposto) {
-            case "ICMS":
-                return $orcamento->valor * 0.1;
-            case "ISS":
-                return $orcamento->valor * 0.06;
-        }
+        // switch-case removed with Strategy Design Pattern
+        return $imposto->calculaImposto($orcamento);
     }
 }
