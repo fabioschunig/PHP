@@ -77,3 +77,31 @@ $orcamento->quantidadeItens = 5;
 
 echo "CalculadoraDeImpostos - IKCV - 5 itens - menos de 300 reais: \n";
 echo $calculadoraImpostos->calcula($orcamento, new IKCV()) . "\n";
+
+// Testes para estadoAtual
+echo "Valor orçamento: \n";
+echo $orcamento->valor . "\n";
+
+$orcamento->estadoAtual = 'EM_APROVACAO';
+echo "Valor desconto com estado EM-APROVAÇÃO: \n";
+echo $orcamento->calculaDescontoExtra() . "\n";
+
+$orcamento->estadoAtual = 'APROVADO';
+echo "Valor desconto com estado APROVADO: \n";
+echo $orcamento->calculaDescontoExtra() . "\n";
+
+$orcamento->estadoAtual = 'REPROVADO';
+echo "Valor desconto com estado REPROVADO: \n";
+try {
+    echo $orcamento->calculaDescontoExtra() . "\n";
+} catch (\Throwable $th) {
+    echo $th->getMessage() . "\n";
+}
+
+$orcamento->estadoAtual = 'FINALIZADO';
+echo "Valor desconto com estado FINALIZADO: \n";
+try {
+    echo $orcamento->calculaDescontoExtra() . "\n";
+} catch (\Throwable $th) {
+    echo $th->getMessage() . "\n";
+}
