@@ -13,11 +13,11 @@ class Aprovado extends EstadoOrcamento
 
     public function finaliza(Orcamento $orcamento)
     {
-        $orcamento->estadoAtual = 'FINALIZADO';
+        $orcamento->estadoAtual = new Finalizado();
     }
 
     public function reprova(Orcamento $orcamento)
     {
-        $orcamento->estadoAtual = 'REPROVADO';
+        $orcamento->estadoAtual = new Reprovado();
     }
 }
