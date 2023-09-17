@@ -82,26 +82,30 @@ echo $calculadoraImpostos->calcula($orcamento, new IKCV()) . "\n";
 echo "Valor orçamento: \n";
 echo $orcamento->valor . "\n";
 
-$orcamento->estadoAtual = 'EM_APROVACAO';
+// Default state is EmAprovacao
+// $orcamento->estadoAtual = 'EM_APROVACAO';
 echo "Valor desconto com estado EM-APROVAÇÃO: \n";
-echo $orcamento->calculaDescontoExtra() . "\n";
+echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
 
-$orcamento->estadoAtual = 'APROVADO';
+//$orcamento->estadoAtual = 'APROVADO';
+$orcamento->aprova();
 echo "Valor desconto com estado APROVADO: \n";
-echo $orcamento->calculaDescontoExtra() . "\n";
+echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
 
-$orcamento->estadoAtual = 'REPROVADO';
+//$orcamento->estadoAtual = 'REPROVADO';
 echo "Valor desconto com estado REPROVADO: \n";
 try {
-    echo $orcamento->calculaDescontoExtra() . "\n";
+    $orcamento->reprova();
+    echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
 } catch (\Throwable $th) {
     echo $th->getMessage() . "\n";
 }
 
-$orcamento->estadoAtual = 'FINALIZADO';
+//$orcamento->estadoAtual = 'FINALIZADO';
 echo "Valor desconto com estado FINALIZADO: \n";
 try {
-    echo $orcamento->calculaDescontoExtra() . "\n";
+    $orcamento->finaliza();
+    echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
 } catch (\Throwable $th) {
     echo $th->getMessage() . "\n";
 }

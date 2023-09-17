@@ -9,6 +9,7 @@ class Orcamento
 {
     public int $quantidadeItens;
     public float $valor;
+    // changing states with State Design Pattern
     public EstadoOrcamento $estadoAtual;
 
     public function __construct()
