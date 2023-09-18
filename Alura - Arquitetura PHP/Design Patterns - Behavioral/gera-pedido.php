@@ -1,6 +1,7 @@
 <?php
 
-use Alura\DesignPattern\{Orcamento, Pedido, GerarPedido};
+use Alura\DesignPattern\GerarPedido;
+use Alura\DesignPattern\GerarPedidoHandler;
 
 require 'vendor/autoload.php';
 
@@ -15,4 +16,5 @@ $gerarPedido = new GerarPedido(
     $numeroItens,
     $nomeCliente,
 );
-$gerarPedido->execute();
+$gerarPedidoHander = new GerarPedidoHandler();
+$gerarPedidoHander->execute($gerarPedido);
