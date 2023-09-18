@@ -86,16 +86,19 @@ echo $orcamento->valor . "\n";
 // $orcamento->estadoAtual = 'EM_APROVACAO';
 echo "Valor desconto com estado EM-APROVAÇÃO: \n";
 echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
+echo "Estado atual: " . $orcamento->estadoAtual::class . "\n";
 
 //$orcamento->estadoAtual = 'APROVADO';
 $orcamento->aprova();
 echo "Valor desconto com estado APROVADO: \n";
 echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
+echo "Estado atual: " . $orcamento->estadoAtual::class . "\n";
 
 //$orcamento->estadoAtual = 'REPROVADO';
 echo "Valor desconto com estado REPROVADO: \n";
 try {
     $orcamento->reprova();
+    echo "Estado atual: " . $orcamento->estadoAtual::class . "\n";
     echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
 } catch (\Throwable $th) {
     echo $th->getMessage() . "\n";
@@ -105,6 +108,7 @@ try {
 echo "Valor desconto com estado FINALIZADO: \n";
 try {
     $orcamento->finaliza();
+    echo "Estado atual: " . $orcamento->estadoAtual::class . "\n";
     echo $orcamento->estadoAtual->calculaDescontoExtra($orcamento) . "\n";
 } catch (\Throwable $th) {
     echo $th->getMessage() . "\n";
