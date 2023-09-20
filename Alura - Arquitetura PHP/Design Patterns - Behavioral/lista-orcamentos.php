@@ -26,7 +26,8 @@ $listaOrcamentos->addOrcamento($orcamento1);
 $listaOrcamentos->addOrcamento($orcamento2);
 $listaOrcamentos->addOrcamento($orcamento3);
 
-foreach ($listaOrcamentos->orcamentos() as $orcamento) {
+// made array not accessible with Iterator Design Pattern
+foreach ($listaOrcamentos as $orcamento) {
     echo "Valor: " . $orcamento->valor . PHP_EOL;
     echo "Estado: " . get_class($orcamento->estadoAtual) . PHP_EOL;
     echo "Qtd. Itens: " . $orcamento->quantidadeItens . PHP_EOL;
