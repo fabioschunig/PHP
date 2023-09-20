@@ -1,5 +1,8 @@
 <?php
 
+use Alura\DesignPattern\AcoesAoGerarPedido\CriarPedidoNoBanco;
+use Alura\DesignPattern\AcoesAoGerarPedido\EnviarPedidoPorEmail;
+use Alura\DesignPattern\AcoesAoGerarPedido\LogGerarPedido;
 use Alura\DesignPattern\GerarPedido;
 use Alura\DesignPattern\GerarPedidoHandler;
 
@@ -17,4 +20,7 @@ $gerarPedido = new GerarPedido(
     $nomeCliente,
 );
 $gerarPedidoHander = new GerarPedidoHandler();
+$gerarPedidoHander->adicionarAcaoAposGerarPedido(new CriarPedidoNoBanco());
+$gerarPedidoHander->adicionarAcaoAposGerarPedido(new LogGerarPedido());
+$gerarPedidoHander->adicionarAcaoAposGerarPedido(new EnviarPedidoPorEmail());
 $gerarPedidoHander->execute($gerarPedido);
