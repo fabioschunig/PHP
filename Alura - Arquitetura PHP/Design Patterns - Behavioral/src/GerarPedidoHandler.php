@@ -29,6 +29,8 @@ class GerarPedidoHandler
         $pedido->nomeCliente = $gerarPedido->getNomeCliente();
         $pedido->orcamento = $orcamento;
 
+        // list of objects to be notified with Observer Design Pattern
+        // (could have used PHP's SplObserver)
         foreach ($this->acoesAposGerarPedido as $acao) {
             $acao->executaAcao($pedido);
         }

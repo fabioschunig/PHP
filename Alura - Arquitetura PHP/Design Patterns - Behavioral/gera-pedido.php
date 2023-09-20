@@ -20,6 +20,7 @@ $gerarPedido = new GerarPedido(
     $nomeCliente,
 );
 $gerarPedidoHander = new GerarPedidoHandler();
+// add observer list
 $gerarPedidoHander->adicionarAcaoAposGerarPedido(new CriarPedidoNoBanco());
 $gerarPedidoHander->adicionarAcaoAposGerarPedido(new LogGerarPedido());
 $gerarPedidoHander->adicionarAcaoAposGerarPedido(new EnviarPedidoPorEmail());
