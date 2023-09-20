@@ -8,6 +8,7 @@ class CriarPedidoNoBanco implements AcaoAposGerarPedido
 {
     public function executaAcao(Pedido $pedido): void
     {
-        echo "Salvando pedido no banco de dados" . PHP_EOL;
+        $dataFinalizacao = $pedido->dataFinalizacao->format('d/m/Y');
+        echo "Salvando pedido banco de dados - criado em $dataFinalizacao" . PHP_EOL;
     }
 }
