@@ -2,6 +2,7 @@
 
 namespace Alura\DesignPattern;
 
+use Alura\DesignPattern\EstadosOrcamento\Finalizado;
 use ArrayIterator;
 use Traversable;
 
@@ -23,5 +24,15 @@ class ListaDeOrcamentos implements \IteratorAggregate
     public function getIterator(): ArrayIterator
     {
         return new \ArrayIterator($this->orcamentos);
+    }
+
+    public function orcamentosFinalizados(): ArrayIterator
+    {
+        $finalizados = array_filter(
+            $this->orcamentos,
+            fn (Orcamento $orcamento) => $orcamento->estadoAtual instanceof Finalizado
+        );
+
+        return new \ArrayIterator($finalizados);
     }
 }

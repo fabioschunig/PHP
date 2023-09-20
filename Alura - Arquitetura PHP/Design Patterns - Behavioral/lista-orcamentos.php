@@ -27,7 +27,18 @@ $listaOrcamentos->addOrcamento($orcamento2);
 $listaOrcamentos->addOrcamento($orcamento3);
 
 // made array not accessible with Iterator Design Pattern
+echo "#Lista de orçamentos:" . PHP_EOL;
 foreach ($listaOrcamentos as $orcamento) {
+    echo "Valor: " . $orcamento->valor . PHP_EOL;
+    echo "Estado: " . get_class($orcamento->estadoAtual) . PHP_EOL;
+    echo "Qtd. Itens: " . $orcamento->quantidadeItens . PHP_EOL;
+
+    echo PHP_EOL;
+}
+
+// orcamentos finalizados
+echo "#Lista de orçamentos FINALIZADOS:" . PHP_EOL;
+foreach ($listaOrcamentos->orcamentosFinalizados() as $orcamento) {
     echo "Valor: " . $orcamento->valor . PHP_EOL;
     echo "Estado: " . get_class($orcamento->estadoAtual) . PHP_EOL;
     echo "Qtd. Itens: " . $orcamento->quantidadeItens . PHP_EOL;
