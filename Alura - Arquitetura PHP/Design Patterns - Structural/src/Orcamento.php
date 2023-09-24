@@ -48,7 +48,7 @@ class Orcamento implements Orcavel
     {
         return array_reduce(
             $this->itens,
-            fn ($valorAcumulado, $item) => $item->valor() + $valorAcumulado,
+            fn (float $valorAcumulado, Orcavel $item) => $item->valor() + $valorAcumulado,
             0,
         );
     }
