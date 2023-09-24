@@ -22,6 +22,10 @@ echo $calculadoraImpostos->calcula($orcamento, new ICMS()) . "\n";
 echo "CalculadoraDeImpostos - ISS: \n";
 echo $calculadoraImpostos->calcula($orcamento, new ISS()) . "\n";
 
+// cálculo de vários impostos
+echo "CalculadoraDeImpostos - ICMS + ISS: \n";
+echo $calculadoraImpostos->calcula($orcamento, new ICMS(new ISS())) . "\n";
+
 // Testes para CalculadoraDeDescontos
 $calculadoraDescontos  = new CalculadoraDeDescontos();
 
