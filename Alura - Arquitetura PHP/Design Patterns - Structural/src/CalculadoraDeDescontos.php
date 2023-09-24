@@ -18,6 +18,8 @@ class CalculadoraDeDescontos
         );
 
         $descontoCalculado = $cadeiaDeDescontos->calculaDesconto($orcamento);
+
+        // calculaDescontos method used Facade Design Pattern to encapsulate services callings
         $logDesconto = new LogDesconto();
         $logDesconto->informar($descontoCalculado);
 
