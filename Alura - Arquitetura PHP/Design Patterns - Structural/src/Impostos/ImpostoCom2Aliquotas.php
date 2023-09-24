@@ -4,10 +4,10 @@ namespace Alura\DesignPattern\Impostos;
 
 use Alura\DesignPattern\Orcamento;
 
-abstract class ImpostoCom2Aliquotas implements Imposto
+abstract class ImpostoCom2Aliquotas extends Imposto
 {
     // common code extracted with Template Method Design Pattern
-    public function calculaImposto(Orcamento $orcamento): float
+    public function realizaCalculoEspecifico(Orcamento $orcamento): float
     {
         if ($this->deveAplicarTaxaMaxima($orcamento)) {
             return $this->calculaTaxaMaxima($orcamento);
