@@ -43,4 +43,13 @@ class Orcamento
     {
         $this->itens[] = $item;
     }
+
+    public function valor(): float
+    {
+        return array_reduce(
+            $this->itens,
+            fn ($valorAcumulado, $item) => $item->valor + $valorAcumulado,
+            0,
+        );
+    }
 }
