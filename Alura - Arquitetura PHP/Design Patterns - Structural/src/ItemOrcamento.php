@@ -8,6 +8,6 @@ class ItemOrcamento implements Orcavel
 
     public function valor(): float
     {
-        return $this->valor();
+        return $this->valor;
     }
 }
