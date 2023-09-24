@@ -24,7 +24,8 @@ echo $calculadoraImpostos->calcula($orcamento, new ISS()) . "\n";
 
 // cálculo de vários impostos
 echo "CalculadoraDeImpostos - ICMS + ISS: \n";
-echo $calculadoraImpostos->calcula($orcamento, new ICMS(new ISS())) . "\n";
+// several classes can be used with Decorator Design Pattern
+echo $calculadoraImpostos->calcula($orcamento, new ICMS(new ISS(new ICPP()))) . "\n";
 
 // Testes para CalculadoraDeDescontos
 $calculadoraDescontos  = new CalculadoraDeDescontos();
