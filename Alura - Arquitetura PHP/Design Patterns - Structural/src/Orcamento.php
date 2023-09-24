@@ -7,7 +7,8 @@ use Alura\DesignPattern\EstadosOrcamento\EstadoOrcamento;
 
 class Orcamento
 {
-    public int $quantidadeItens;
+    private array $itens;
+
     public float $valor;
     // changing states with State Design Pattern
     public EstadoOrcamento $estadoAtual;
@@ -15,6 +16,7 @@ class Orcamento
     public function __construct()
     {
         $this->estadoAtual = new EmAprovacao;
+        $this->itens = [];
     }
 
     public function aplicaDescontoExtra()
@@ -35,5 +37,10 @@ class Orcamento
     public function finaliza()
     {
         $this->estadoAtual->finaliza($this);
+    }
+
+    public function addItem(ItemOrcamento $item)
+    {
+        $this->itens[] = $item;
     }
 }
