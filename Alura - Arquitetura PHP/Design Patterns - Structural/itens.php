@@ -16,5 +16,12 @@ $item2->valor = 500;
 $orcamento->addItem($item1);
 $orcamento->addItem($item2);
 
+$orcamentoAntigo = new Orcamento();
+$item3 = new ItemOrcamento();
+$item3->valor = 150;
+$orcamentoAntigo->addItem($item3);
+
+$orcamento->addItem($orcamentoAntigo);
+
 echo "Valor orçamento:" . PHP_EOL;
 echo $orcamento->valor() . PHP_EOL;
