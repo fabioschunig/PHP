@@ -1,18 +1,22 @@
 <?php
 
+use Alura\DesignPattern\DadosExtrinsecosPedido;
 use Alura\DesignPattern\Orcamento;
 use Alura\DesignPattern\Pedido;
 
 require 'vendor/autoload.php';
 
 $pedidos = [];
-// pequena otimização economiza 3MB de RAM
-$hoje = new \DateTimeImmutable();
+
+// otimização com separação de dados extrínsecos
+$dados = new DadosExtrinsecosPedido();
+$dados->dataFinalizacao = new \DateTimeImmutable();
+$dados->nomeCliente = md5((string) rand(1, 99999));
+
 for ($i = 0; $i < 10000; $i++) {
     $pedido = new Pedido();
-    $pedido->nomeCliente = md5((string) rand(1, 99999));
+    $pedido->dados = $dados;
     $pedido->orcamento = new Orcamento;
-    $pedido->dataFinalizacao = $hoje;
 
     $pedidos[] = $pedido;
 }
