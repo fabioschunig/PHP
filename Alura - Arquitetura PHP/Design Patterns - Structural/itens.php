@@ -37,3 +37,5 @@ $orcamento->addItem($orcamentoAntigo);
 
 echo "Valor orçamento:" . PHP_EOL;
 echo $orcamento->valor() . PHP_EOL;
+// demora alguns segundos devido ao sleep
+echo $orcamento->valor() . PHP_EOL;
