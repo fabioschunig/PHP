@@ -1,5 +1,6 @@
 <?php
 
+use Alura\DesignPattern\CacheOrcamentoProxy;
 use Alura\DesignPattern\ItemOrcamento;
 use Alura\DesignPattern\Orcamento;
 
@@ -35,7 +36,12 @@ $orcamentoMaisAntigo->addItem($item5);
 $orcamentoAntigo->addItem($orcamentoMaisAntigo);
 $orcamento->addItem($orcamentoAntigo);
 
+$proxyCache = new CacheOrcamentoProxy($orcamento);
+
 echo "Valor orçamento:" . PHP_EOL;
-echo $orcamento->valor() . PHP_EOL;
 // demora alguns segundos devido ao sleep
-echo $orcamento->valor() . PHP_EOL;
+echo $proxyCache->valor() . PHP_EOL;
+// novas chamadas são instânteneas devido ao cache
+echo $proxyCache->valor() . PHP_EOL;
+echo $proxyCache->valor() . PHP_EOL;
+echo $proxyCache->valor() . PHP_EOL;
