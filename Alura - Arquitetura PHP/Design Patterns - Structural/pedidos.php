@@ -9,9 +9,12 @@ require 'vendor/autoload.php';
 $pedidos = [];
 
 // otimização com separação de dados extrínsecos
-$dados = new DadosExtrinsecosPedido();
-$dados->dataFinalizacao = new \DateTimeImmutable();
-$dados->nomeCliente = md5((string) rand(1, 99999));
+//$dados = new DadosExtrinsecosPedido();
+//$dados->dataFinalizacao = new \DateTimeImmutable();
+//$dados->nomeCliente = md5((string) rand(1, 99999));
+
+// mudado para objeto imutável
+$dados = new DadosExtrinsecosPedido(md5((string) rand(1, 99999)), new \DateTimeImmutable());
 
 for ($i = 0; $i < 10000; $i++) {
     $pedido = new Pedido();
