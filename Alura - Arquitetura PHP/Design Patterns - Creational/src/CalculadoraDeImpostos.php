@@ -1,0 +1,14 @@
+<?php
+
+namespace Alura\DesignPattern;
+
+use Alura\DesignPattern\Impostos\Imposto;
+
+class CalculadoraDeImpostos
+{
+    public function calcula(Orcamento $orcamento, Imposto $imposto)
+    {
+        // switch-case removed with Strategy Design Pattern
+        return $imposto->calculaImposto($orcamento);
+    }
+}
