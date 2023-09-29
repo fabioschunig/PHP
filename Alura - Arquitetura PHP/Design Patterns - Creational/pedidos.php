@@ -9,16 +9,16 @@ require 'vendor/autoload.php';
 $pedidos = [];
 
 // otimização com separação de dados extrínsecos
-//$dados = new TemplatePedido();
-//$dados->dataFinalizacao = new \DateTimeImmutable();
-//$dados->nomeCliente = md5((string) rand(1, 99999));
+//$template = new TemplatePedido();
+//$template->dataFinalizacao = new \DateTimeImmutable();
+//$template->nomeCliente = md5((string) rand(1, 99999));
 
 // mudado para objeto imutável
-$dados = new TemplatePedido(md5((string) rand(1, 99999)), new \DateTimeImmutable());
+$template = new TemplatePedido(md5((string) rand(1, 99999)), new \DateTimeImmutable());
 
 for ($i = 0; $i < 10000; $i++) {
     $pedido = new Pedido();
-    $pedido->dados = $dados;
+    $pedido->template = $template;
     $pedido->orcamento = new Orcamento;
 
     $pedidos[] = $pedido;
