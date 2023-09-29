@@ -2,6 +2,7 @@
 
 use Alura\DesignPattern\Pedido\TemplatePedido;
 use Alura\DesignPattern\Orcamento;
+use Alura\DesignPattern\Pedido\CriadorDePedido;
 use Alura\DesignPattern\Pedido\Pedido;
 
 require 'vendor/autoload.php';
@@ -14,12 +15,18 @@ $pedidos = [];
 //$template->nomeCliente = md5((string) rand(1, 99999));
 
 // mudado para objeto imutável
-$template = new TemplatePedido(md5((string) rand(1, 99999)), new \DateTimeImmutable());
+//$template = new TemplatePedido(md5((string) rand(1, 99999)), new \DateTimeImmutable());
+
+// Factory
+$criadorPedido = new CriadorDePedido();
 
 for ($i = 0; $i < 10000; $i++) {
-    $pedido = new Pedido();
-    $pedido->template = $template;
-    $pedido->orcamento = new Orcamento;
+    $orcamento = new Orcamento;
+    $pedido = $criadorPedido->criaPedido(
+        'Fabio',
+        date('Y-m-d'),
+        $orcamento,
+    );
 
     $pedidos[] = $pedido;
 }
