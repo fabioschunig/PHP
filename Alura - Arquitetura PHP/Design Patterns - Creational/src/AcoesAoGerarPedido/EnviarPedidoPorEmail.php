@@ -2,7 +2,7 @@
 
 namespace Alura\DesignPattern\AcoesAoGerarPedido;
 
-use Alura\DesignPattern\Pedido;
+use Alura\DesignPattern\Pedido\Pedido;
 
 class EnviarPedidoPorEmail implements AcaoAposGerarPedido
 {

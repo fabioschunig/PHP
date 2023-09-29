@@ -1,8 +1,8 @@
 <?php
 
-use Alura\DesignPattern\DadosExtrinsecosPedido;
+use Alura\DesignPattern\Pedido\DadosExtrinsecosPedido;
 use Alura\DesignPattern\Orcamento;
-use Alura\DesignPattern\Pedido;
+use Alura\DesignPattern\Pedido\Pedido;
 
 require 'vendor/autoload.php';
 

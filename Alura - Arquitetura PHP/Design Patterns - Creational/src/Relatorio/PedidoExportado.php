@@ -2,7 +2,7 @@
 
 namespace Alura\DesignPattern\Relatorio;
 
-use Alura\DesignPattern\Pedido;
+use Alura\DesignPattern\Pedido\Pedido;
 
 class PedidoExportado implements ConteudoExportado
 {

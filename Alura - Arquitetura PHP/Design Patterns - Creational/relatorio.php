@@ -2,7 +2,8 @@
 
 require 'vendor/autoload.php';
 
-use Alura\DesignPattern\{Orcamento, Pedido};
+use Alura\DesignPattern\Orcamento;
+use Alura\DesignPattern\Pedido\Pedido;
 use Alura\DesignPattern\Relatorio\{OrcamentoExportado, PedidoExportado};
 use Alura\DesignPattern\Relatorio\{ArquivoXmlExportado, ArquivoZipExportado};
 
