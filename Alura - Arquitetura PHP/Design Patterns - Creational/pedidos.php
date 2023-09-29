@@ -1,6 +1,6 @@
 <?php
 
-use Alura\DesignPattern\Pedido\DadosExtrinsecosPedido;
+use Alura\DesignPattern\Pedido\TemplatePedido;
 use Alura\DesignPattern\Orcamento;
 use Alura\DesignPattern\Pedido\Pedido;
 
@@ -9,12 +9,12 @@ require 'vendor/autoload.php';
 $pedidos = [];
 
 // otimização com separação de dados extrínsecos
-//$dados = new DadosExtrinsecosPedido();
+//$dados = new TemplatePedido();
 //$dados->dataFinalizacao = new \DateTimeImmutable();
 //$dados->nomeCliente = md5((string) rand(1, 99999));
 
 // mudado para objeto imutável
-$dados = new DadosExtrinsecosPedido(md5((string) rand(1, 99999)), new \DateTimeImmutable());
+$dados = new TemplatePedido(md5((string) rand(1, 99999)), new \DateTimeImmutable());
 
 for ($i = 0; $i < 10000; $i++) {
     $pedido = new Pedido();
