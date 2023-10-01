@@ -5,6 +5,11 @@ use Alura\DesignPattern\Log\StdoutLogManager;
 
 require 'vendor/autoload.php';
 
-//$logManager = new StdoutLogManager();
+$message = 'Teste de log';
+$severidade = 'info';
+
+$logManager = new StdoutLogManager();
+$logManager->log($severidade, $message . ' - StdOut');
+
 $logManager = new FileLogManager(__DIR__ . '/log.txt');
-$logManager->log('info', 'Teste de log - Stdout');
+$logManager->log($severidade, $message . ' - File');

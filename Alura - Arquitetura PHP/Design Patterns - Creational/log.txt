@@ -1,4 +1,0 @@
-[01/10/2023][info]: Teste de log - Stdout
-[01/10/2023][info]: Teste de log - Stdout
-[01/10/2023][info]: Teste de log - Stdout
-[01/10/2023][info]: Teste de log - Stdout
