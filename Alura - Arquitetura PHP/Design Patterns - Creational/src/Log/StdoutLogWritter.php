@@ -6,6 +6,6 @@ class StdoutLogWritter implements LogWritter
 {
     public function escreve(string $mensagemFormatada): void
     {
-        echo $mensagemFormatada;
+        echo $mensagemFormatada . PHP_EOL;
     }
 }
