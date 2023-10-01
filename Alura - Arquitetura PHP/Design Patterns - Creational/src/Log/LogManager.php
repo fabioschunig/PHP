@@ -9,7 +9,7 @@ abstract class LogManager
         /** @var LogWritter $logWritter */
         $logWritter = $this->criarLogWritter();
 
-        $dataHoje = date('d/m/Y');
+        $dataHoje = date('d/m/Y H:i:s');
         $mensagemFormatada = "[$dataHoje][$severidade]: $mensagem";
         $logWritter->escreve($mensagemFormatada);
     }
