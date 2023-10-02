@@ -23,4 +23,9 @@ $venda = $vendaFactory->criarVenda();
 $imposto = $vendaFactory->imposto();
 
 var_dump($venda);
+// dumps:
+// object(Alura\DesignPattern\Venda\VendaProduto)
+
 var_dump($imposto);
+// dumps:
+// object(Alura\DesignPattern\Impostos\ICMS)
