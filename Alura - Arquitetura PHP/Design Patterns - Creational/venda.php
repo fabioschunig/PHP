@@ -16,3 +16,11 @@ var_dump($venda);
 var_dump($imposto);
 // dumps:
 // object(Alura\DesignPattern\Impostos\ISS)
+
+
+$vendaFactory = new VendaProdutoFactory(12345);
+$venda = $vendaFactory->criarVenda();
+$imposto = $vendaFactory->imposto();
+
+var_dump($venda);
+var_dump($imposto);
