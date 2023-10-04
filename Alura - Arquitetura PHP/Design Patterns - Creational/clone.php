@@ -24,9 +24,10 @@ $notaFiscal = $builder->paraEmpresa('12.3456.789/0001-00', 'Empresa de testes')
     ->constroi();
 
 echo "Nota fiscal:" . PHP_EOL;
-print_r($notaFiscal);
+var_dump($notaFiscal);
 
-$notaFiscal2 = $notaFiscal->clonar();
+//$notaFiscal2 = $notaFiscal->clonar();
+$notaFiscal2 = clone $notaFiscal;
 
 $item4 = new ItemOrcamento();
 $item4->valor = 135;
@@ -34,4 +35,4 @@ $item4->valor = 135;
 $notaFiscal2->itens[] = $item4;
 
 echo "Nota fiscal clone:" . PHP_EOL;
-print_r($notaFiscal2);
+var_dump($notaFiscal2);
