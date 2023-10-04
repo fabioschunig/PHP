@@ -13,3 +13,7 @@ $builder->comItem(new ItemOrcamento());
 $builder->comObservacoes('Nota fiscal gerado com um construtor');
 
 print_r($builder);
+
+$notaFiscal = $builder->constroi();
+
+print_r($notaFiscal);

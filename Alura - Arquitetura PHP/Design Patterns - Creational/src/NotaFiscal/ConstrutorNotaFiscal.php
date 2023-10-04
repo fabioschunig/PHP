@@ -34,4 +34,9 @@ class ConstrutorNotaFiscal
     {
         $this->notaFiscal->dataEmissao = $dataEmissao;
     }
+
+    public function constroi(): NotaFiscal
+    {
+        return $this->notaFiscal;
+    }
 }
