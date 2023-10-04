@@ -6,7 +6,7 @@ use Alura\DesignPattern\ItemOrcamento;
 
 abstract class ConstrutorNotaFiscal
 {
-    private NotaFiscal $notaFiscal;
+    protected NotaFiscal $notaFiscal;
 
     public function __construct()
     {
