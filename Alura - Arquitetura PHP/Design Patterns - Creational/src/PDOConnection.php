@@ -2,6 +2,6 @@
 
 namespace Alura\DesignPattern;
 
-class PDOConnection
+class PDOConnection extends \PDO
 {
 }
