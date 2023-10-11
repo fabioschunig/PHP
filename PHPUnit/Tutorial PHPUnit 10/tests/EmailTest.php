@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PHPUnit10\Tutorial;
-
+use PHPUnit10\Tutorial\Email;
 use PHPUnit\Framework\TestCase;
 
 final class EmailTest extends TestCase
