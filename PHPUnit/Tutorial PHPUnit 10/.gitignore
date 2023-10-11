@@ -1,2 +1,5 @@
 # vendor dir
 /vendor
+
+# phpunit cache file
+.phpunit.result.cache
