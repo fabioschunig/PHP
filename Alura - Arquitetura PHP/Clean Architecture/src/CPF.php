@@ -8,17 +8,28 @@ class CPF implements \Stringable
 
     public function __construct(string $numero)
     {
-        if (!$this->validarNumero($numero)) {
-            throw new \InvalidArgumentException(
-                'Número de CPF inválido'
-            );
-        }
-        $this->numero = $numero;
+        $this->setNumero($numero);
     }
 
     public function __toString(): string
     {
         return $this->numero;
+    }
+
+    public function setNumero(string $numero): void
+    {
+        $opcoes = [
+            'options' => [
+                'regexp' => '/\d{3}\.\d{3}\.\d{3}\-\d{2}/',
+            ]
+        ];
+        if (filter_var($numero, FILTER_VALIDATE_REGEXP, $opcoes) === false) {
+            throw new \InvalidArgumentException(
+                'Número de CPF inválido'
+            );
+        }
+
+        $this->numero = $numero;
     }
 
     // referência:
