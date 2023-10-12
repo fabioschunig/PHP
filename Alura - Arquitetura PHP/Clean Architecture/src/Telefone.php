@@ -2,7 +2,7 @@
 
 namespace Alura\Arquitetura;
 
-class Telefone
+class Telefone implements \Stringable
 {
     private string $ddd;
     private string $numero;
@@ -11,5 +11,10 @@ class Telefone
     {
         $this->ddd = $ddd;
         $this->numero = $numero;
+    }
+
+    public function __toString(): string
+    {
+        return "(" . $this->ddd . ") " . $this->numero;
     }
 }
