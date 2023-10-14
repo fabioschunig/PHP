@@ -20,7 +20,7 @@ class Telefone implements \Stringable
 
     public function setDdd(string $ddd): void
     {
-        if (preg_match('/\d{2}/', $ddd) !== 1) {
+        if (preg_match('/\b\d{2}\b/', $ddd) !== 1) {
             throw new \InvalidArgumentException(
                 'DDD inválido'
             );
@@ -31,7 +31,7 @@ class Telefone implements \Stringable
 
     public function setNumero(string $numero): void
     {
-        if (preg_match('/\d{8,9}/', $numero) !== 1) {
+        if (preg_match('/\b\d{8,9}\b/', $numero) !== 1) {
             throw new \InvalidArgumentException(
                 'Número de telefone inválido'
             );
