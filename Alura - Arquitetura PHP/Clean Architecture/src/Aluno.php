@@ -16,8 +16,10 @@ class Aluno
         $this->email = $email;
     }
 
-    public function adicionarTelefone(string $ddd, string $numero)
+    public function adicionarTelefone(string $ddd, string $numero): self
     {
         $this->telefones[] = new Telefone($ddd, $numero);
+
+        return $this;
     }
 }
