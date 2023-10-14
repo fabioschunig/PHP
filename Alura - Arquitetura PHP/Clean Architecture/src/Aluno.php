@@ -16,6 +16,15 @@ class Aluno
         $this->email = $email;
     }
 
+    public static function comCPFNomeEEmail(string $cpf, string $nome, string $email): self
+    {
+        return new Aluno(
+            new CPF($cpf),
+            $nome,
+            new Email($email),
+        );
+    }
+
     public function adicionarTelefone(string $ddd, string $numero): self
     {
         $this->telefones[] = new Telefone($ddd, $numero);
