@@ -8,11 +8,7 @@ class FabricaAluno
 
     public function comCPFEmailENome(string $cpf, string $email, string $nome): self
     {
-        $this->aluno = new Aluno(
-            new CPF($cpf),
-            $nome,
-            new Email($email),
-        );
+        $this->aluno = Aluno::comCPFNomeEEmail($cpf, $nome, $email);
 
         return $this;
     }
