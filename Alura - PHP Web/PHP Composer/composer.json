@@ -1,0 +1,12 @@
+{
+    "name": "fabioschunig/buscador-cursos",
+    "description": "Projeto que busca cursos no site da Alura",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Fabio Schunig",
+            "email": "fabio.schunig@gmail.com"
+        }
+    ],
+    "require": {}
+}
