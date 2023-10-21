@@ -19,3 +19,8 @@ foreach ($cursos as $curso) {
 
 echo "Teste de classmap" . PHP_EOL;
 echo Teste::mensagem();
+echo PHP_EOL;
+
+echo "TesteV2" . PHP_EOL;
+echo TesteV2::mensagemV2();
+echo PHP_EOL;
