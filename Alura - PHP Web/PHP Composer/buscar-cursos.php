@@ -16,3 +16,6 @@ $cursos = $buscador->buscar('cursos-online-programacao/php');
 foreach ($cursos as $curso) {
     echo $curso . PHP_EOL;
 }
+
+echo "Teste de classmap" . PHP_EOL;
+echo Teste::mensagem();

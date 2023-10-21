@@ -16,6 +16,9 @@
     "autoload": {
         "psr-4": {
             "Alura\\BuscadorDeCursos\\": "src/"
-        }
+        },
+        "classmap": [
+            "src-legacy/Teste.php"
+        ]
     }
 }
