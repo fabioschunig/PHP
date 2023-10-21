@@ -24,3 +24,6 @@ echo PHP_EOL;
 echo "TesteV2" . PHP_EOL;
 echo TesteV2::mensagemV2();
 echo PHP_EOL;
+
+echo exibeMensagem("Mensagem de teste via function");
+echo exibeMensagem("Segunda mensagem de teste via function");

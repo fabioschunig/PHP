@@ -19,6 +19,9 @@
         },
         "classmap": [
             "src-legacy/Teste.php"
+        ],
+        "files": [
+            "src-legacy/functions.php"
         ]
     }
 }
