@@ -23,5 +23,8 @@
         "files": [
             "src-legacy/functions.php"
         ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.4"
     }
 }
