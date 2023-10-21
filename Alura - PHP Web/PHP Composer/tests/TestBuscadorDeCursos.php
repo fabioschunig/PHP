@@ -1,5 +1,7 @@
 <?php
 
+namespace Alura\BuscadorDeCursos\Testes;
+
 use Alura\BuscadorDeCursos\Buscador;
 use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\TestCase;
