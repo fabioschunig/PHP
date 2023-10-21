@@ -14,7 +14,7 @@ return [
     // If this is set to `null`,
     // then Phan assumes the PHP version which is closest to the minor version
     // of the php executable used to execute Phan.
-    "target_php_version" => null,
+    "target_php_version" => '8.2',
 
     // A list of directories that should be parsed for class and
     // method information. After excluding the directories
@@ -25,7 +25,9 @@ return [
     // your application should be included in this list.
     'directory_list' => [
         'src',
-        'vendor/symfony/console',
+        'vendor/symfony/dom-crawler',
+        'vendor/guzzlehttp/guzzle',
+        'vendor/psr/http-message',
     ],
 
     // A directory list that defines files that will be excluded
