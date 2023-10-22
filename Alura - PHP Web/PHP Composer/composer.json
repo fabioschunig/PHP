@@ -45,5 +45,6 @@
     },
     "scripts-descriptions": {
         "check": "Executa as verificações do código - PHAN, CS e TEST"
-    }
+    },
+    "bin": "buscar-cursos"
 }
