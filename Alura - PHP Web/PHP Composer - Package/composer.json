@@ -1,0 +1,5 @@
+{
+    "require": {
+        "fabioschunig/buscador-cursos": "^1.0"
+    }
+}
