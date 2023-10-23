@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "fabioschunig/buscador-cursos",
-            "version": "v1.0.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabioschunig/Alura-Buscador-de-Cursos.git",
-                "reference": "d50cd5771260cb1e2da6336a75efa57f58b347c8"
+                "reference": "7c9b17e804bbfd12e8cd0aa452e23c87bdf801a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabioschunig/Alura-Buscador-de-Cursos/zipball/d50cd5771260cb1e2da6336a75efa57f58b347c8",
-                "reference": "d50cd5771260cb1e2da6336a75efa57f58b347c8",
+                "url": "https://api.github.com/repos/fabioschunig/Alura-Buscador-de-Cursos/zipball/7c9b17e804bbfd12e8cd0aa452e23c87bdf801a7",
+                "reference": "7c9b17e804bbfd12e8cd0aa452e23c87bdf801a7",
                 "shasum": ""
             },
             "require": {
@@ -30,6 +30,9 @@
                 "phpunit/phpunit": "^10.4",
                 "squizlabs/php_codesniffer": "^3.7"
             },
+            "bin": [
+                "buscar-cursos.php"
+            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -37,6 +40,9 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
             "authors": [
                 {
                     "name": "Fabio Schunig",
@@ -46,9 +52,9 @@
             "description": "Projeto que busca cursos no site da Alura",
             "support": {
                 "issues": "https://github.com/fabioschunig/Alura-Buscador-de-Cursos/issues",
-                "source": "https://github.com/fabioschunig/Alura-Buscador-de-Cursos/tree/v1.0.0"
+                "source": "https://github.com/fabioschunig/Alura-Buscador-de-Cursos/tree/v1.1.1"
             },
-            "time": "2023-10-22T23:15:07+00:00"
+            "time": "2023-10-23T00:06:45+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
