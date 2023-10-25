@@ -12,8 +12,8 @@ echo $sqlSelect . PHP_EOL;
 $statement = $pdo->query($sqlSelect);
 var_dump($statement);
 
-$studentList = $statement->fetchAll();
+$studentList = $statement->fetchAll(PDO::FETCH_ASSOC);
 var_dump($studentList);
 
-echo $studentList[0][1] . PHP_EOL;
+// echo $studentList[0][1] . PHP_EOL;
 echo $studentList[0]['name'] . PHP_EOL;
