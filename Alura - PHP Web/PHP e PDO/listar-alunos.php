@@ -1,8 +1,20 @@
 <?php
 
 use Alura\Pdo\Domain\Model\Student;
+use Alura\Pdo\Infrastructure\Repository\PdoStudentRepository;
 
 require_once 'vendor/autoload.php';
+
+$repo = new PdoStudentRepository();
+$students = $repo->allStudents();
+var_dump($students);
+
+$birthDate = new DateTimeImmutable('1984-09-15');
+$students = $repo->studentsBirthAt($birthDate);
+var_dump($students);
+
+exit;
+
 
 $pdo = \Alura\Pdo\Infrastructure\Persistence\ConnectionCreator::createConnection();
 
