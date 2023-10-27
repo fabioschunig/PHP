@@ -16,9 +16,8 @@ class PdoStudentRepository implements StudentRepository
         $this->connection = ConnectionCreator::createConnection();
     }
 
-    public function allStudents(): array
+    private function selectStudents(string $sqlSelect): array
     {
-        $sqlSelect = "SELECT * FROM students;";
         $statement = $this->connection->query($sqlSelect);
         $studentDataList = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -34,9 +33,17 @@ class PdoStudentRepository implements StudentRepository
         return $studentList;
     }
 
+    public function allStudents(): array
+    {
+        return $this->selectStudents("SELECT * FROM students;");
+    }
+
     public function studentsBirthAt(\DateTimeInterface $birthDate): array
     {
-        return array();
+        $dateFormated = $birthDate->format('Y-m-d');
+        $sqlSelect = "SELECT * FROM students WHERE birth_date = '$dateFormated';";
+
+        return $this->selectStudents($sqlSelect);
     }
 
     public function save(Student $student): bool
