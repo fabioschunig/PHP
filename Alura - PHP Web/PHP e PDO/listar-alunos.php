@@ -5,7 +5,9 @@ use Alura\Pdo\Infrastructure\Repository\PdoStudentRepository;
 
 require_once 'vendor/autoload.php';
 
-$repo = new PdoStudentRepository();
+$pdo = \Alura\Pdo\Infrastructure\Persistence\ConnectionCreator::createConnection();
+
+$repo = new PdoStudentRepository($pdo);
 $students = $repo->allStudents();
 var_dump($students);
 
@@ -14,9 +16,6 @@ $students = $repo->studentsBirthAt($birthDate);
 var_dump($students);
 
 exit;
-
-
-$pdo = \Alura\Pdo\Infrastructure\Persistence\ConnectionCreator::createConnection();
 
 $sqlSelect = "SELECT * FROM students;";
 

@@ -5,6 +5,8 @@ use Alura\Pdo\Infrastructure\Repository\PdoStudentRepository;
 
 require_once 'vendor/autoload.php';
 
+$pdo = \Alura\Pdo\Infrastructure\Persistence\ConnectionCreator::createConnection();
+
 $birthDate = new \DateTimeImmutable('1992-04-13');
 
 $student = new Student(
@@ -13,7 +15,7 @@ $student = new Student(
     $birthDate
 );
 
-$repo = new PdoStudentRepository();
+$repo = new PdoStudentRepository($pdo);
 $repo->save($student);
 
 $studentList = $repo->studentsBirthAt($birthDate);
@@ -27,8 +29,6 @@ $studentList = $repo->studentsBirthAt($birthDate);
 var_dump($studentList);
 
 exit;
-
-$pdo = \Alura\Pdo\Infrastructure\Persistence\ConnectionCreator::createConnection();
 
 $student = new Student(
     null,
