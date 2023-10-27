@@ -48,7 +48,19 @@ class PdoStudentRepository implements StudentRepository
 
     public function save(Student $student): bool
     {
-        return false;
+        $studentId = $student->id();
+
+        if ($studentId === null) {
+            $sqlSave = "INSERT INTO students (name, birth_date) VALUES (:name, :birth_date);";
+        } else {
+            $sqlSave = "UPDATE students SET name = :name, birth_date = :birth_date WHERE id = $studentId;";
+        }
+
+        $statement = $this->connection->prepare($sqlSave);
+        $statement->bindValue(':name', $student->name());
+        $statement->bindValue(':birth_date', $student->birthDate()->format('Y-m-d'));
+
+        return $statement->execute();
     }
 
     public function remove(Student $student): bool
