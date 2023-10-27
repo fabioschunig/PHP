@@ -1,7 +1,6 @@
 <?php
 
-$arquivoBancoDados = __DIR__ . '/banco.sqlite';
-$pdo = new PDO('sqlite:' . $arquivoBancoDados);
+$pdo = \Alura\Pdo\Infrastructure\Persistence\ConnectionCreator::createConnection();
 
 echo "Conectado ao SQLite: " . $arquivoBancoDados . PHP_EOL;
 
