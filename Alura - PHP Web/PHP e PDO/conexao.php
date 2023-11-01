@@ -23,3 +23,6 @@ $sqlCreateDatabase = '
 ';
 
 $pdo->exec($sqlCreateDatabase);
+
+// testando inclusão de telefones
+$pdo->exec("INSERT INTO phones (area_code, number, student_id) VALUES ('48', '123456789', 1), ('49', '22222222', 1);");
