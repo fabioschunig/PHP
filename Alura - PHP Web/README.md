@@ -20,3 +20,11 @@ PHP e PDO: trabalhando com bancos de dados
 [PHP e PDO](https://cursos.alura.com.br/course/php-pdo-banco-de-dados)
 
 Código fonte dos exemplos: [PHP e PDO](PHP%20e%20PDO)
+
+---
+### PHP e MySQL
+PHP e MySQL: criando sua primeira aplicação web
+
+[PHP e MySQL](https://cursos.alura.com.br/course/php-mysql-criando-primeira-aplicacao-web)
+
+Código fonte dos exemplos: [PHP e MySQL](PHP%20e%20MySQL)
