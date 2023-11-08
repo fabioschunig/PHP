@@ -2,11 +2,11 @@
 
 require 'src/conexao-bd.php';
 
-$sqlCafe = "SELECT * FROM produtos WHERE tipo = 'Café'";
+$sqlCafe = "SELECT * FROM produtos WHERE tipo = 'Café' ORDER BY preco";
 $stmt = $pdo->query($sqlCafe);
 $produtosCafe = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sqlAlmoco = "SELECT * FROM produtos WHERE tipo = 'Almoço'";
+$sqlAlmoco = "SELECT * FROM produtos WHERE tipo = 'Almoço' ORDER BY preco";
 $stmt = $pdo->query($sqlAlmoco);
 $produtosAlmoco = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
