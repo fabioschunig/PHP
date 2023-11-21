@@ -53,4 +53,9 @@ class Produto
     {
         return $this->preco;
     }
+
+    public function getPrecoFormatado(): string
+    {
+        return "R$ " . number_format($this->preco, 2);
+    }
 }
