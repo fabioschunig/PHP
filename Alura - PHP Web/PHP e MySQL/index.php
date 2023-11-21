@@ -1,10 +1,25 @@
 <?php
 
 require 'src/conexao-bd.php';
+require 'src/Modelo/Produto.php';
 
 $sqlCafe = "SELECT * FROM produtos WHERE tipo = 'Café' ORDER BY preco";
 $stmt = $pdo->query($sqlCafe);
 $produtosCafe = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$dadosCafe = array_map(
+    function ($cafe) {
+        return new Produto(
+            $cafe['id'],
+            $cafe['tipo'],
+            $cafe['nome'],
+            $cafe['descricao'],
+            $cafe['imagem'],
+            $cafe['preco'],
+        );
+    },
+    $produtosCafe
+);
 
 $sqlAlmoco = "SELECT * FROM produtos WHERE tipo = 'Almoço' ORDER BY preco";
 $stmt = $pdo->query($sqlAlmoco);
@@ -43,14 +58,14 @@ $produtosAlmoco = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-cafe-manha-produtos">
-                <?php foreach ($produtosCafe as $cafe) : ?>
+                <?php foreach ($dadosCafe as $cafe) : ?>
                     <div class="container-produto">
                         <div class="container-foto">
-                            <img src="img/<?= $cafe['imagem']; ?>">
+                            <img src="img/<?= $cafe->getImagem(); ?>">
                         </div>
-                        <p><?= $cafe['nome']; ?></p>
-                        <p><?= $cafe['descricao']; ?></p>
-                        <p><?= "R$ " . $cafe['preco']; ?></p>
+                        <p><?= $cafe->getNome(); ?></p>
+                        <p><?= $cafe->getDescricao(); ?></p>
+                        <p><?= "R$ " . number_format($cafe->getPreco(), 2); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
