@@ -12,7 +12,7 @@ class ProdutoRepositorio
         $this->pdo = $pdo;
     }
 
-    private function formarObjeto($dados)
+    private function formarObjeto($dados): Produto
     {
         return new Produto(
             $dados['id'],
