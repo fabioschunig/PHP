@@ -34,4 +34,27 @@ class ProdutoRepositorio
 
         return $dadosCafe;
     }
+
+    public function opcoesAlmoco(): array
+    {
+        $sqlAlmoco = "SELECT * FROM produtos WHERE tipo = 'Almoço' ORDER BY preco";
+        $stmt = $this->pdo->query($sqlAlmoco);
+        $produtosAlmoco = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $dadosAlmoco = array_map(
+            function ($almoco) {
+                return new Produto(
+                    $almoco['id'],
+                    $almoco['tipo'],
+                    $almoco['nome'],
+                    $almoco['descricao'],
+                    $almoco['imagem'],
+                    $almoco['preco'],
+                );
+            },
+            $produtosAlmoco
+        );
+
+        return $dadosAlmoco;
+    }
 }
