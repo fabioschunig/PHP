@@ -25,6 +25,20 @@ $sqlAlmoco = "SELECT * FROM produtos WHERE tipo = 'Almoço' ORDER BY preco";
 $stmt = $pdo->query($sqlAlmoco);
 $produtosAlmoco = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$dadosAlmoco = array_map(
+    function ($almoco) {
+        return new Produto(
+            $almoco['id'],
+            $almoco['tipo'],
+            $almoco['nome'],
+            $almoco['descricao'],
+            $almoco['imagem'],
+            $almoco['preco'],
+        );
+    },
+    $produtosAlmoco
+);
+
 ?>
 
 <!doctype html>
@@ -76,14 +90,14 @@ $produtosAlmoco = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-almoco-produtos">
-                <?php foreach ($produtosAlmoco as $almoco) : ?>
+                <?php foreach ($dadosAlmoco as $almoco) : ?>
                     <div class="container-produto">
                         <div class="container-foto">
-                            <img src="img/<?= $almoco['imagem']; ?>">
+                            <img src="img/<?= $almoco->getImagem(); ?>">
                         </div>
-                        <p><?= $almoco['nome']; ?></p>
-                        <p><?= $almoco['descricao']; ?></p>
-                        <p><?= "R$ " . $almoco['preco']; ?></p>
+                        <p><?= $almoco->getNome(); ?></p>
+                        <p><?= $almoco->getDescricao(); ?></p>
+                        <p><?= "R$ " . number_format($almoco->getPreco(), 2); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
