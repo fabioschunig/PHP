@@ -12,6 +12,18 @@ class ProdutoRepositorio
         $this->pdo = $pdo;
     }
 
+    private function formarObjeto($dados)
+    {
+        return new Produto(
+            $dados['id'],
+            $dados['tipo'],
+            $dados['nome'],
+            $dados['descricao'],
+            $dados['imagem'],
+            $dados['preco']
+        );
+    }
+
     public function opcoesCafe(): array
     {
         $sqlCafe = "SELECT * FROM produtos WHERE tipo = 'Café' ORDER BY preco";
@@ -20,14 +32,7 @@ class ProdutoRepositorio
 
         $dadosCafe = array_map(
             function ($cafe) {
-                return new Produto(
-                    $cafe['id'],
-                    $cafe['tipo'],
-                    $cafe['nome'],
-                    $cafe['descricao'],
-                    $cafe['imagem'],
-                    $cafe['preco'],
-                );
+                return $this->formarObjeto($cafe);
             },
             $produtosCafe
         );
@@ -43,14 +48,7 @@ class ProdutoRepositorio
 
         $dadosAlmoco = array_map(
             function ($almoco) {
-                return new Produto(
-                    $almoco['id'],
-                    $almoco['tipo'],
-                    $almoco['nome'],
-                    $almoco['descricao'],
-                    $almoco['imagem'],
-                    $almoco['preco'],
-                );
+                return $this->formarObjeto($almoco);
             },
             $produtosAlmoco
         );
