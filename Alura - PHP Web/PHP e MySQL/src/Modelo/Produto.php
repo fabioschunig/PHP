@@ -44,6 +44,11 @@ class Produto
         return $this->imagem;
     }
 
+    public function getImagemDiretorio(): string
+    {
+        return "img/" . $this->imagem;
+    }
+
     public function getPreco(): float
     {
         return $this->preco;

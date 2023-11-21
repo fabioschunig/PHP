@@ -75,7 +75,7 @@ $dadosAlmoco = array_map(
                 <?php foreach ($dadosCafe as $cafe) : ?>
                     <div class="container-produto">
                         <div class="container-foto">
-                            <img src="img/<?= $cafe->getImagem(); ?>">
+                            <img src="<?= $cafe->getImagemDiretorio(); ?>">
                         </div>
                         <p><?= $cafe->getNome(); ?></p>
                         <p><?= $cafe->getDescricao(); ?></p>
@@ -93,7 +93,7 @@ $dadosAlmoco = array_map(
                 <?php foreach ($dadosAlmoco as $almoco) : ?>
                     <div class="container-produto">
                         <div class="container-foto">
-                            <img src="img/<?= $almoco->getImagem(); ?>">
+                            <img src="<?= $almoco->getImagemDiretorio(); ?>">
                         </div>
                         <p><?= $almoco->getNome(); ?></p>
                         <p><?= $almoco->getDescricao(); ?></p>
