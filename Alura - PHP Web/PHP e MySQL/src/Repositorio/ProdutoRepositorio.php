@@ -19,8 +19,8 @@ class ProdutoRepositorio
             $dados['tipo'],
             $dados['nome'],
             $dados['descricao'],
+            $dados['preco'],
             $dados['imagem'],
-            $dados['preco']
         );
     }
 
