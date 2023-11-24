@@ -55,4 +55,20 @@ class ProdutoRepositorio
 
         return $dadosAlmoco;
     }
+
+    public function buscarTodos(): array
+    {
+        $sql = "SELECT * FROM produtos ORDER BY preco";
+        $statement = $this->pdo->query($sql);
+        $dados = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $todosOsDados = array_map(
+            function ($produto) {
+                return $this->formarObjeto($produto);
+            },
+            $dados
+        );
+
+        return $todosOsDados;
+    }
 }
