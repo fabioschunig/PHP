@@ -13,10 +13,11 @@ if (isset($_POST['cadastro'])) {
         $_POST['preco'],
     );
 
-    var_dump($produto);
-    exit();
-}
+    $produtoRepositorio = new ProdutoRepositorio($pdo);
+    $produtoRepositorio->salvar($produto);
 
+    header("location: admin.php");
+}
 
 ?>
 
