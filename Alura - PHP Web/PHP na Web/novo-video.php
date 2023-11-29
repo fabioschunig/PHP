@@ -7,7 +7,7 @@ $sqlInsert = "INSERT INTO videos (url, title) VALUES (?, ?)";
 
 $statement = $pdo->prepare($sqlInsert);
 $statement->bindValue(1, $_POST['url']);
-$statement->bindValue(2, $_POST['title']);
+$statement->bindValue(2, $_POST['titulo']);
 
 if ($statement->execute() === TRUE) {
     header("location: /index.php");
