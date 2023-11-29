@@ -9,4 +9,6 @@ $statement = $pdo->prepare($sqlInsert);
 $statement->bindValue(1, $_POST['url']);
 $statement->bindValue(2, $_POST['title']);
 
-var_dump($statement->execute());
+if ($statement->execute() === TRUE) {
+    header("location: /index.php");
+}
