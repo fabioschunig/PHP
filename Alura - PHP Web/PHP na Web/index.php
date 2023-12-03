@@ -47,7 +47,7 @@ $videoList = $pdo->query("SELECT * FROM videos")->fetchAll(PDO::FETCH_ASSOC);
                         <h3><?= $video['title'] ?></h3>
                         <div class="acoes-video">
                             <a href="./pages/enviar-video.html">Editar</a>
-                            <a href="./pages/enviar-video.html">Excluir</a>
+                            <a href="/remover-video.php?id=<?= $video['id'] ?>">Excluir</a>
                         </div>
                     </div>
                 </li>
