@@ -8,11 +8,16 @@ if ($url === false) {
     header("location: /index.php?sucesso=0");
 }
 
+$titulo = filter_input(INPUT_POST, 'titulo');
+if ($titulo === false) {
+    header("location: /index.php?sucesso=0");
+}
+
 $sqlInsert = "INSERT INTO videos (url, title) VALUES (?, ?)";
 
 $statement = $pdo->prepare($sqlInsert);
-$statement->bindValue(1, $_POST['url']);
-$statement->bindValue(2, $_POST['titulo']);
+$statement->bindValue(1, $url);
+$statement->bindValue(2, $titulo);
 
 if ($statement->execute() === TRUE) {
     header("location: /index.php");
