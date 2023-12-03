@@ -16,7 +16,6 @@ if ($id !== false) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
