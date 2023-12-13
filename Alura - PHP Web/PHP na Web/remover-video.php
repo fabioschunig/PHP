@@ -4,12 +4,12 @@ $dbPath = __DIR__ . '/banco.sqlite';
 $pdo = new PDO("sqlite:$dbPath");
 
 $id = $_GET['id'];
-$sqlDelete = "DELETE FROM videos WHERE id = ?";
-$statement = $pdo->prepare($sqlDelete);
+$sql = 'DELETE FROM videos WHERE id = ?';
+$statement = $pdo->prepare($sql);
 $statement->bindValue(1, $id);
 
 if ($statement->execute() === false) {
-    header("location: /index.php?sucesso=0");
+    header('Location: /?sucesso=0');
 } else {
-    header("location: /index.php?sucesso=1");
+    header('Location: /?sucesso=1');
 }
