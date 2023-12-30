@@ -26,5 +26,6 @@ class DeleteVideoController implements Controller
         } else {
             header('Location: /?sucesso=1');
         }
+
     }
 }

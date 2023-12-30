@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 use Alura\Mvc\Controller\{
     Controller,
+    DeleteVideoController,
+    EditVideoController,
     Error404Controller,
+    NewVideoController,
+    VideoFormController,
+    VideoListController
 };
 use Alura\Mvc\Repository\VideoRepository;
 
