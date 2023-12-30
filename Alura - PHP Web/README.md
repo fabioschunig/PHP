@@ -33,6 +33,10 @@ Código fonte dos exemplos: [PHP e MySQL](PHP%20e%20MySQL)
 ### PHP na Web
 PHP na Web: conhecendo o padrão MVC
 
-[PHP na Web](https://cursos.alura.com.br/course/php-web-conhecendo-padrao-mvc)
+[Padrão MVC](https://cursos.alura.com.br/course/php-web-conhecendo-padrao-mvc)
+
+PHP na Web: lidando com segurança e API
+
+[Segurança e API](https://cursos.alura.com.br/course/php-web-lidando-seguranca-api)
 
 Código fonte dos exemplos: [PHP na Web](PHP%20na%20Web)
