@@ -3,3 +3,6 @@
 
 #sqlite database files
 *.sqlite
+
+#uploads
+/public/img/upload/*
