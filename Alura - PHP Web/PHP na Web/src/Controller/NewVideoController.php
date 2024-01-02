@@ -26,7 +26,17 @@ class NewVideoController implements Controller
             return;
         }
 
-        $success = $this->videoRepository->add(new Video($url, $titulo));
+        $video = new Video($url, $titulo);
+        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $fileName = $_FILES['image']['name'];
+            move_uploaded_file(
+                $_FILES['image']['tmp_name'],
+                __DIR__ . '/../../public/img/upload/' . $fileName,
+            );
+            $video->setFilePath($fileName);
+        }
+
+        $success = $this->videoRepository->add($video);
         if ($success === false) {
             header('Location: /?sucesso=0');
         } else {
