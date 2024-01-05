@@ -25,11 +25,16 @@ $pathInfo = $_SERVER['PATH_INFO'] ?? '/';
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 session_start();
-session_regenerate_id();
 $isLoginRoute = $pathInfo === '/login';
 if (!array_key_exists('logado', $_SESSION) && (!$isLoginRoute)) {
     header('Location: /login');
     return;
+}
+if (isset($_SESSION['logado'])) {
+    $originalInfo = $_SESSION['logado'];
+    unset($_SESSION['logado']);
+    session_regenerate_id();
+    $_SESSION['logado'] = $originalInfo;
 }
 
 $key = "$httpMethod|$pathInfo";
