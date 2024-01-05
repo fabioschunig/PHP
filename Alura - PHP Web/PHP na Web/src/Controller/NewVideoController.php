@@ -28,7 +28,7 @@ class NewVideoController implements Controller
 
         $video = new Video($url, $titulo);
         if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $fileName = pathinfo($_FILES['image']['name'], PATHINFO_BASENAME);
+            $fileName = uniqid('upload_') . '_' . pathinfo($_FILES['image']['name'], PATHINFO_BASENAME);
             move_uploaded_file(
                 $_FILES['image']['tmp_name'],
                 __DIR__ . '/../../public/img/upload/' . $fileName,
