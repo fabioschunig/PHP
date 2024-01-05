@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\Video;
+use Alura\Mvc\Helper\FileUploadHelper;
 use Alura\Mvc\Repository\VideoRepository;
 
 class NewVideoController implements Controller
@@ -27,17 +28,18 @@ class NewVideoController implements Controller
         }
 
         $video = new Video($url, $titulo);
-        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $finfo = new \finfo(FILEINFO_MIME_TYPE);
-            $mimeType = $finfo->file($_FILES['image']['tmp_name']);
 
-            if (str_starts_with($mimeType, 'imagem/')) {
-                $fileName = uniqid('upload_') . '_' . pathinfo($_FILES['image']['name'], PATHINFO_BASENAME);
-                move_uploaded_file(
-                    $_FILES['image']['tmp_name'],
-                    __DIR__ . '/../../public/img/upload/' . $fileName,
+        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $tmpFileName = $_FILES['image']['tmp_name'];
+            $fileName = $_FILES['image']['name'];
+
+            if (FileUploadHelper::checkFileIsImage($tmpFileName)) {
+                $filePathName = FileUploadHelper::moveUploadFile(
+                    $tmpFileName,
+                    $fileName,
+                    __DIR__ . '/../../public/img/upload/'
                 );
-                $video->setFilePath($fileName);
+                $video->setFilePath($filePathName);
             }
         }
 
