@@ -9,7 +9,7 @@ class FileUploadHelper
         $finfo = new \finfo(FILEINFO_MIME_TYPE);
         $mimeType = $finfo->file($filePath);
 
-        return (str_starts_with($mimeType, 'imagem/'));
+        return (str_starts_with($mimeType, 'image/'));
     }
 
     public static function moveUploadFile(string $tmpName, string $fileName, string $dirPath): string
@@ -19,6 +19,7 @@ class FileUploadHelper
             $tmpName,
             $dirPath . $fileName,
         );
+
         return $fileName;
     }
 }

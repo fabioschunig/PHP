@@ -48,7 +48,6 @@ class EditVideoController implements Controller
                 );
                 $video->setFilePath($filePathName);
             }
-            $video->setFilePath($fileName);
         }
 
         $success = $this->videoRepository->update($video);
