@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\Video;
+use Alura\Mvc\Helper\FileUploadHelper;
 use Alura\Mvc\Repository\VideoRepository;
 
 class EditVideoController implements Controller
@@ -36,11 +37,17 @@ class EditVideoController implements Controller
         $video->setId($id);
 
         if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $tmpFileName = $_FILES['image']['tmp_name'];
             $fileName = $_FILES['image']['name'];
-            move_uploaded_file(
-                $_FILES['image']['tmp_name'],
-                __DIR__ . '/../../public/img/upload/' . $fileName,
-            );
+
+            if (FileUploadHelper::checkFileIsImage($tmpFileName)) {
+                $filePathName = FileUploadHelper::moveUploadFile(
+                    $tmpFileName,
+                    $fileName,
+                    __DIR__ . '/../../public/img/upload/'
+                );
+                $video->setFilePath($filePathName);
+            }
             $video->setFilePath($fileName);
         }
 
