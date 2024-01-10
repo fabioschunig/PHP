@@ -13,4 +13,5 @@ return [
     'POST|/login' => \Alura\Mvc\Controller\LoginController::class,
     'GET|/logout' => \Alura\Mvc\Controller\LogoutController::class,
     'GET|/videos-json' => \Alura\Mvc\Controller\JsonVideoListController::class,
+    'POST|/videos' => \Alura\Mvc\Controller\NewJsonVideoController::class,
 ];
