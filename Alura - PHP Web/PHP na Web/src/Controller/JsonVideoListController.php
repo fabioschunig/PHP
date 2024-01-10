@@ -17,10 +17,12 @@ class JsonVideoListController implements Controller
     {
         $videoList = array_map(
             function (Video $video): array {
+                $filePath = $video->getFilePath() ? '/img/upload/' . $video->getFilePath() : null;
+
                 return [
                     'url' => $video->url,
                     'title' => $video->title,
-                    'file_path' => '/img/upload/' . $video->getFilePath(),
+                    'file_path' => $filePath,
                 ];
             },
             $this->videoRepository->all()
