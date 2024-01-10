@@ -20,7 +20,7 @@ class JsonVideoListController implements Controller
                 return [
                     'url' => $video->url,
                     'title' => $video->title,
-                    'file_path' => $video->getFilePath(),
+                    'file_path' => '/img/upload/' . $video->getFilePath(),
                 ];
             },
             $this->videoRepository->all()
