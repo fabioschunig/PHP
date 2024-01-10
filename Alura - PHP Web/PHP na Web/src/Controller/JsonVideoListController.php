@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Controller;
 
+use Alura\Mvc\Entity\Video;
 use Alura\Mvc\Repository\VideoRepository;
 
 class JsonVideoListController implements Controller
@@ -14,7 +15,17 @@ class JsonVideoListController implements Controller
 
     public function processaRequisicao(): void
     {
-        $videoList = $this->videoRepository->all();
+        $videoList = array_map(
+            function (Video $video): array {
+                return [
+                    'url' => $video->url,
+                    'title' => $video->title,
+                    'file_path' => $video->getFilePath(),
+                ];
+            },
+            $this->videoRepository->all()
+        );
+
         echo json_encode($videoList);
     }
 }
