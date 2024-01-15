@@ -39,4 +39,8 @@ PHP na Web: lidando com segurança e API
 
 [Segurança e API](https://cursos.alura.com.br/course/php-web-lidando-seguranca-api)
 
+PHP na Web: aplicando boas práticas e PSRs
+
+[Boas práticas e PSRs](https://cursos.alura.com.br/course/php-web-aplicando-boas-praticas-psrs)
+
 Código fonte dos exemplos: [PHP na Web](PHP%20na%20Web)
