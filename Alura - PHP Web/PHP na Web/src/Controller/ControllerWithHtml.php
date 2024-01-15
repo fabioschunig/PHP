@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Controller;
 
-class ControllerWithHtml
+abstract class ControllerWithHtml implements Controller
 {
     private const TEMPLATE_PATH = __DIR__ . '/../../views/';
 
