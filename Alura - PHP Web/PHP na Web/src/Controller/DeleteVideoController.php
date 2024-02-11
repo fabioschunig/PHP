@@ -16,13 +16,15 @@ class DeleteVideoController implements Controller
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($id === null || $id === false) {
-            header('Location: /?sucesso=0');
+            $_SESSION['error_message'] = 'ID inválido';
+            header('Location: /remover-video');
             return;
         }
 
         $success = $this->videoRepository->remove($id);
         if ($success === false) {
-            header('Location: /?sucesso=0');
+            $_SESSION['error_message'] = 'Erro ao excluir vídeo';
+            header('Location: /remover-video');
         } else {
             header('Location: /?sucesso=1');
         }
