@@ -10,6 +10,8 @@ use Alura\Mvc\Repository\VideoRepository;
 
 class EditVideoController implements Controller
 {
+    use \Alura\Mvc\Helper\FlashMessageTrait;
+
     public function __construct(private VideoRepository $videoRepository)
     {
     }
@@ -18,20 +20,20 @@ class EditVideoController implements Controller
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($id === false || $id === null) {
-            $_SESSION['error_message'] = 'ID inválido';
+            $this->addErrorMessage('ID inválido');
             header('Location: /editar-video');
             return;
         }
 
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
         if ($url === false) {
-            $_SESSION['error_message'] = 'URL inválida';
+            $this->addErrorMessage('URL inválida');
             header('Location: /editar-video');
             return;
         }
         $titulo = filter_input(INPUT_POST, 'titulo');
         if ($titulo === false) {
-            $_SESSION['error_message'] = 'Título inválido';
+            $this->addErrorMessage('Título inválido');
             header('Location: /editar-video');
             return;
         }
@@ -56,7 +58,7 @@ class EditVideoController implements Controller
         $success = $this->videoRepository->update($video);
 
         if ($success === false) {
-            $_SESSION['error_message'] = 'Erro ao editar vídeo';
+            $this->addErrorMessage('Erro ao editar vídeo');
             header('Location: /editar-video');
         } else {
             header('Location: /?sucesso=1');
