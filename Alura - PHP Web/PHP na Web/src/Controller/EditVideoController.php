@@ -7,6 +7,9 @@ namespace Alura\Mvc\Controller;
 use Alura\Mvc\Entity\Video;
 use Alura\Mvc\Helper\FileUploadHelper;
 use Alura\Mvc\Repository\VideoRepository;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class EditVideoController implements Controller
 {
@@ -16,26 +19,34 @@ class EditVideoController implements Controller
     {
     }
 
-    public function processaRequisicao(): void
+    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $queryParams = $request->getQueryParams();
+
+        $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);
         if ($id === false || $id === null) {
             $this->addErrorMessage('ID inválido');
-            header('Location: /editar-video');
-            return;
+            return new Response(302, [
+                'Location' => '/editar-video',
+            ]);
         }
 
-        $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
+        $queryPost = $request->getParsedBody();
+
+        $url = filter_var($queryPost['url'], FILTER_VALIDATE_URL);
         if ($url === false) {
             $this->addErrorMessage('URL inválida');
-            header('Location: /editar-video');
-            return;
+            return new Response(302, [
+                'Location' => '/editar-video',
+            ]);
         }
-        $titulo = filter_input(INPUT_POST, 'titulo');
+
+        $titulo = filter_var($queryPost['titulo']);
         if ($titulo === false) {
             $this->addErrorMessage('Título inválido');
-            header('Location: /editar-video');
-            return;
+            return new Response(302, [
+                'Location' => '/editar-video',
+            ]);
         }
 
         $video = new Video($url, $titulo);
@@ -59,9 +70,13 @@ class EditVideoController implements Controller
 
         if ($success === false) {
             $this->addErrorMessage('Erro ao editar vídeo');
-            header('Location: /editar-video');
+            return new Response(302, [
+                'Location' => '/editar-video',
+            ]);
         } else {
-            header('Location: /?sucesso=1');
+            return new Response(200, [
+                'Location' => '/',
+            ]);
         }
     }
 }
