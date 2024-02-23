@@ -12,6 +12,7 @@ use Alura\Mvc\Controller\{
     VideoListController
 };
 use Alura\Mvc\Repository\VideoRepository;
+use Nyholm\Psr7\ServerRequest;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -46,4 +47,5 @@ if (array_key_exists($key, $routes)) {
     $controller = new Error404Controller();
 }
 /** @var Controller $controller */
-$controller->processaRequisicao();
+$response = $controller->processaRequisicao(new ServerRequest($httpMethod, $key));
+echo $response->getBody();
