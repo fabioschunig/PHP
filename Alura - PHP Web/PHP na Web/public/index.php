@@ -47,5 +47,5 @@ if (array_key_exists($key, $routes)) {
     $controller = new Error404Controller();
 }
 /** @var Controller $controller */
-$response = $controller->processaRequisicao(new ServerRequest($httpMethod, $key));
+$response = $controller->processaRequisicao(new ServerRequest($httpMethod, $_SERVER['REQUEST_URI']));
 echo $response->getBody();
