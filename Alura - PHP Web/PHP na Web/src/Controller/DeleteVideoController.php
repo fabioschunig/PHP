@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Repository\VideoRepository;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class DeleteVideoController implements Controller
 {
@@ -14,21 +17,27 @@ class DeleteVideoController implements Controller
     {
     }
 
-    public function processaRequisicao(): void
+    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $queryParams = $request->getQueryParams();
+        $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);
         if ($id === null || $id === false) {
             $this->addErrorMessage('ID inválido');
-            header('Location: /remover-video');
-            return;
+            return new Response(302, [
+                'Location' => '/remover-video',
+            ]);
         }
 
         $success = $this->videoRepository->remove($id);
         if ($success === false) {
             $this->addErrorMessage('Erro ao excluir vídeo');
-            header('Location: /remover-video');
+            return new Response(302, [
+                'Location' => '/remover-video',
+            ]);
         } else {
-            header('Location: /?sucesso=1');
+            return new Response(302, [
+                'Location' => '/',
+            ]);
         }
     }
 }
