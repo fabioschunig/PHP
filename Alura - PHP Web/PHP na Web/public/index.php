@@ -44,3 +44,5 @@ if (array_key_exists($key, $routes)) {
 /** @var Controller $controller */
 $response = $controller->processaRequisicao(new ServerRequest($httpMethod, $_SERVER['REQUEST_URI']));
 echo $response->getBody();
+
+// implement PSR-17 factory
