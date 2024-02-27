@@ -36,25 +36,25 @@ class LoginController implements Controller
         $passwordHashed = $userData['password'] ?? '';
         $correctPassword = password_verify($password, $passwordHashed);
 
-        if ($correctPassword) {
-            if (password_needs_rehash($passwordHashed, PASSWORD_DEFAULT)) {
-                $sqlUpdatePassword = "UPDATE users SET password = ? WHERE id = ?";
-                $statement = $this->pdo->prepare($sqlUpdatePassword);
-                $statement->bindValue(1, password_hash($password, PASSWORD_DEFAULT));
-                $statement->bindValue(2, $userData['id']);
-                $statement->execute();
-            }
-
-            $_SESSION['logado'] = true;
-
-            return new Response(302, [
-                'Location' => '/',
-            ]);
-        } else {
+        if (!$correctPassword) {
             $this->addErrorMessage('Usuário ou senha inválidos');
             return new Response(302, [
                 'Location' => '/login',
             ]);
         }
+
+        if (password_needs_rehash($passwordHashed, PASSWORD_DEFAULT)) {
+            $sqlUpdatePassword = "UPDATE users SET password = ? WHERE id = ?";
+            $statement = $this->pdo->prepare($sqlUpdatePassword);
+            $statement->bindValue(1, password_hash($password, PASSWORD_DEFAULT));
+            $statement->bindValue(2, $userData['id']);
+            $statement->execute();
+        }
+
+        $_SESSION['logado'] = true;
+
+        return new Response(302, [
+            'Location' => '/',
+        ]);
     }
 }
