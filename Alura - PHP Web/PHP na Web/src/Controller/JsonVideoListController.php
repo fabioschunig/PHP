@@ -31,8 +31,10 @@ class JsonVideoListController implements Controller
             $this->videoRepository->all()
         );
 
-        $jsonResponse = json_encode($videoList);
-
-        return new Response(body: $jsonResponse);
+        return new Response(
+            200,
+            ['Content-Type' => 'application/json'],
+            json_encode($videoList),
+        );
     }
 }
