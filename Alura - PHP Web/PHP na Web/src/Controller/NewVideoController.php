@@ -10,6 +10,7 @@ use Alura\Mvc\Repository\VideoRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UploadedFileInterface;
 
 class NewVideoController implements Controller
 {
@@ -41,9 +42,15 @@ class NewVideoController implements Controller
 
         $video = new Video($url, $titulo);
 
-        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $tmpFileName = $_FILES['image']['tmp_name'];
-            $fileName = $_FILES['image']['name'];
+        $files = $request->getUploadedFiles();
+        /** @var UploadedFileInterface $uploadedImage */
+        $uploadedImage = $files['image'];
+
+        if ($uploadedImage->getError() === UPLOAD_ERR_OK) {
+            // $tmpFileName = $_FILES['image']['tmp_name'];
+            $tmpFileName = $uploadedImage->getStream()->getMetadata('uri');
+            // $fileName = $_FILES['image']['name'];
+            $fileName = $uploadedImage->getClientFilename();
 
             if (FileUploadHelper::checkFileIsImage($tmpFileName)) {
                 $filePathName = FileUploadHelper::moveUploadFile(
