@@ -2,12 +2,8 @@
 
 declare(strict_types=1);
 
-use Alura\Mvc\Controller\{
-    Controller,
-    Error404Controller,
-};
+use Alura\Mvc\Controller\Error404Controller;
 use Alura\Mvc\Repository\VideoRepository;
-use Nyholm\Psr7\ServerRequest;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -55,8 +51,7 @@ $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
 
 $request = $creator->fromGlobals();
 
-/** @var Controller $controller */
-$response = $controller->processaRequisicao($request);
+$response = $controller->handle($request);
 
 http_response_code($response->getStatusCode());
 foreach ($response->getHeaders() as $name => $values) {
