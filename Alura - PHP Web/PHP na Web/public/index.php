@@ -58,6 +58,7 @@ $request = $creator->fromGlobals();
 /** @var Controller $controller */
 $response = $controller->processaRequisicao($request);
 
+http_response_code($response->getStatusCode());
 foreach ($response->getHeaders() as $name => $values) {
     foreach ($values as $value) {
         header(sprintf('%s: %s', $name, $value), false);
