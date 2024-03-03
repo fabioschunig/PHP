@@ -56,7 +56,5 @@ $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
 $request = $creator->fromGlobals();
 
 /** @var Controller $controller */
-$response = $controller->processaRequisicao(new ServerRequest($httpMethod, $_SERVER['REQUEST_URI']));
-echo $response->getBody();
-
-// implement PSR-17 factory
+$response = $controller->processaRequisicao($request);
+var_dump($response);
