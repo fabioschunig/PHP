@@ -57,4 +57,5 @@ $request = $creator->fromGlobals();
 
 /** @var Controller $controller */
 $response = $controller->processaRequisicao($request);
-var_dump($response);
+
+echo $response->getBody();
