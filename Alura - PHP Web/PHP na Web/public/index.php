@@ -44,16 +44,16 @@ if (array_key_exists($key, $routes)) {
 
 // https://packagist.org/packages/nyholm/psr7-server
 // Instanciate ANY PSR-17 factory implementations. Here is nyholm/psr7 as an example
-// $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+$psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
 
-// $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
-//     $psr17Factory, // ServerRequestFactory
-//     $psr17Factory, // UriFactory
-//     $psr17Factory, // UploadedFileFactory
-//     $psr17Factory  // StreamFactory
-// );
+$creator = new \Nyholm\Psr7Server\ServerRequestCreator(
+    $psr17Factory, // ServerRequestFactory
+    $psr17Factory, // UriFactory
+    $psr17Factory, // UploadedFileFactory
+    $psr17Factory  // StreamFactory
+);
 
-// $serverRequest = $creator->fromGlobals();
+$request = $creator->fromGlobals();
 
 /** @var Controller $controller */
 $response = $controller->processaRequisicao(new ServerRequest($httpMethod, $_SERVER['REQUEST_URI']));
