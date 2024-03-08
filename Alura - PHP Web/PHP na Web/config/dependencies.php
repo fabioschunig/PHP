@@ -10,6 +10,10 @@ $builder = new \DI\ContainerBuilder();
 $dbPath = __DIR__ . '/../banco.sqlite';
 $builder->addDefinitions([
     PDO::class => \DI\create(PDO::class)->constructor("sqlite:$dbPath"),
+    \League\Plates\Engine::class => function () {
+        $templatePath = __DIR__ . '/../views';
+        return new \League\Plates\Engine($templatePath);
+    }
 ]);
 
 
