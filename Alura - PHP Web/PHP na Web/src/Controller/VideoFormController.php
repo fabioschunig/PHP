@@ -14,8 +14,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class VideoFormController implements RequestHandlerInterface
 {
-    use \Alura\Mvc\Helper\HtmlRenderTrait;
-
     public function __construct(
         private VideoRepository $repository,
         private Engine $templates,

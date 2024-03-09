@@ -13,8 +13,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class VideoListController implements RequestHandlerInterface
 {
-    use \Alura\Mvc\Helper\HtmlRenderTrait;
-
     public function __construct(
         private VideoRepository $videoRepository,
         private Engine $templates

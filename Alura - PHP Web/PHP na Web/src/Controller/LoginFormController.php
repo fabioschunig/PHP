@@ -12,8 +12,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class LoginFormController implements RequestHandlerInterface
 {
-    use \Alura\Mvc\Helper\HtmlRenderTrait;
-
     public function __construct(private Engine $templates)
     {
     }
