@@ -1,5 +1,5 @@
 <?php
-$this->insert('inicio-html');
+$this->layout('layout');
 
 /** @var \Alura\Mvc\Entity\Video|null $video */
 ?>
@@ -40,5 +40,3 @@ $this->insert('inicio-html');
         <input class="formulario__botao" type="submit" value="Enviar" />
     </form>
 </main>
-
-<?php $this->insert('fim-html');
