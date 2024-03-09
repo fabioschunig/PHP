@@ -26,7 +26,7 @@ class VideoFormController implements RequestHandlerInterface
     {
         $queryParams = $request->getQueryParams();
 
-        $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);
+        $id = filter_var($queryParams['id'] ?? "", FILTER_VALIDATE_INT);
         /** @var ?Video $video */
         $video = null;
         if ($id !== false && $id !== null) {
