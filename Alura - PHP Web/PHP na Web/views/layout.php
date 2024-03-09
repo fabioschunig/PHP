@@ -36,7 +36,7 @@
         </h2>
     <?php endif; ?>
 
-    <?= $this->section('contents'); ?>
+    <?= $this->section('content'); ?>
 
 </body>
 
