@@ -4,6 +4,7 @@ namespace Alura\Arquitetura\Infra\Aluno;
 
 use Alura\Arquitetura\Dominio\Aluno\Aluno;
 use Alura\Arquitetura\Dominio\Aluno\AlunoRepository;
+use Alura\Arquitetura\Dominio\Aluno\Telefone;
 use Alura\Arquitetura\Dominio\CPF;
 
 class AlunoRepositoryPdo implements AlunoRepository
@@ -20,6 +21,16 @@ class AlunoRepositoryPdo implements AlunoRepository
         $stmt->bindValue('nome', $aluno->nome());
         $stmt->bindValue('email', $aluno->email());
         $stmt->execute();
+
+        /** @var Telefone $telefone */
+        foreach ($aluno->telefones() as $telefone) {
+            $sql = "INSERT INTO telefones VALUES (:ddd, :numero, :cpf_aluno);";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindValue('ddd', $telefone->ddd());
+            $stmt->bindValue('numero', $telefone->numero());
+            $stmt->bindValue('cpf_aluno', $aluno->cpf());
+            $stmt->execute();
+        }
     }
 
     public function buscarPorCpf(CPF $cpf): Aluno
