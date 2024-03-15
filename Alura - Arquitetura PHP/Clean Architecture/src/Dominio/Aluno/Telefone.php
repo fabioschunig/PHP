@@ -39,4 +39,14 @@ class Telefone implements \Stringable
 
         $this->numero = $numero;
     }
+
+    public function ddd(): string
+    {
+        return $this->ddd;
+    }
+
+    public function numero(): string
+    {
+        return $this->numero;
+    }
 }
