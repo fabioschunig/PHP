@@ -49,4 +49,9 @@ class Aluno
     {
         return $this->email;
     }
+
+    public function telefones(): array
+    {
+        return $this->telefones;
+    }
 }
