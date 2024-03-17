@@ -10,7 +10,7 @@ class Aluno
     private CPF $cpf;
     private string $nome;
     private Email $email;
-    private array $telefones;
+    private array $telefones = array();
 
     public function __construct(CPF $cpf, string $nome, Email $email)
     {
