@@ -14,5 +14,9 @@ $cpf = new CPF('490.621.190-93');
 $email = new Email('teste@email.com');
 $aluno = new Aluno($cpf, 'Test Aluno', $email);
 
+$aluno->adicionarTelefone('47', '999315708');
+$aluno->adicionarTelefone('48', '979686701');
+$aluno->adicionarTelefone('49', '984768320');
+
 $alunoRepository = new AlunoRepositoryPdo($pdo);
 $alunoRepository->adicionar($aluno);
