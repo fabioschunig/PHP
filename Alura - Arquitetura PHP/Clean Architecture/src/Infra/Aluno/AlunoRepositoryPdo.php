@@ -76,12 +76,12 @@ class AlunoRepositoryPdo implements AlunoRepository
             );
 
             $sql = "SELECT * FROM telefones WHERE cpf_aluno = :cpf";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->bindValue('cpf', $aluno->cpf(), \PDO::PARAM_STR);
-            $stmt->execute();
+            $stmtTelefones = $this->connection->prepare($sql);
+            $stmtTelefones->bindValue('cpf', $aluno->cpf(), \PDO::PARAM_STR);
+            $stmtTelefones->execute();
 
-            while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $aluno->adicionarTelefone($result['ddd'], $result['numero']);
+            while ($resultTelefones = $stmtTelefones->fetch(\PDO::FETCH_ASSOC)) {
+                $aluno->adicionarTelefone($resultTelefones['ddd'], $resultTelefones['numero']);
             }
 
             $alunos[] = $aluno;
