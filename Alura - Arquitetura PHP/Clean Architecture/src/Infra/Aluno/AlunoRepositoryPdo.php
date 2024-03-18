@@ -48,6 +48,15 @@ class AlunoRepositoryPdo implements AlunoRepository
             new Email($result['email']),
         );
 
+        $sql = "SELECT * FROM telefones WHERE cpf_aluno = :cpf";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue('cpf', $cpf, \PDO::PARAM_STR);
+        $stmt->execute();
+
+        while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $aluno->adicionarTelefone($result['ddd'], $result['numero']);
+        }
+
         return $aluno;
     }
 
