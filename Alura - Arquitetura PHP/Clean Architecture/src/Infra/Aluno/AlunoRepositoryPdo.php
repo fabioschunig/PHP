@@ -6,6 +6,7 @@ use Alura\Arquitetura\Dominio\Aluno\Aluno;
 use Alura\Arquitetura\Dominio\Aluno\AlunoRepository;
 use Alura\Arquitetura\Dominio\Aluno\Telefone;
 use Alura\Arquitetura\Dominio\CPF;
+use Alura\Arquitetura\Dominio\Email;
 
 class AlunoRepositoryPdo implements AlunoRepository
 {
@@ -35,7 +36,17 @@ class AlunoRepositoryPdo implements AlunoRepository
 
     public function buscarPorCpf(CPF $cpf): Aluno
     {
-        //
+        $sql = "SELECT * FROM alunos WHERE cpf = :cpf";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue('cpf', $cpf, \PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return (new Aluno(
+            new CPF($result['cpf']),
+            $result['nome'],
+            new Email($result['email']),
+        ));
     }
 
     public function buscarTodos(): array
