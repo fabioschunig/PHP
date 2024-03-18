@@ -42,11 +42,13 @@ class AlunoRepositoryPdo implements AlunoRepository
         $stmt->execute();
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        return (new Aluno(
+        $aluno = new Aluno(
             new CPF($result['cpf']),
             $result['nome'],
             new Email($result['email']),
-        ));
+        );
+
+        return $aluno;
     }
 
     public function buscarTodos(): array
