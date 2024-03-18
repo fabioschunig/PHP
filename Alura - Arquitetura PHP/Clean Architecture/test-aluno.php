@@ -20,3 +20,6 @@ $aluno->adicionarTelefone('49', '984768320');
 
 $alunoRepository = new AlunoRepositoryPdo($pdo);
 $alunoRepository->adicionar($aluno);
+
+$result = $alunoRepository->buscarPorCpf($cpf);
+print_r($result);
