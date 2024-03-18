@@ -42,11 +42,7 @@ class AlunoRepositoryPdo implements AlunoRepository
         $stmt->execute();
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        $aluno = new Aluno(
-            new CPF($result['cpf']),
-            $result['nome'],
-            new Email($result['email']),
-        );
+        $aluno = $this->alunoHydrate($result['cpf'], $result['nome'], $result['email']);
 
         $sql = "SELECT * FROM telefones WHERE cpf_aluno = :cpf";
         $stmt = $this->connection->prepare($sql);
@@ -69,11 +65,7 @@ class AlunoRepositoryPdo implements AlunoRepository
         $stmt->execute();
 
         while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $aluno = new Aluno(
-                new CPF($result['cpf']),
-                $result['nome'],
-                new Email($result['email']),
-            );
+            $aluno = $this->alunoHydrate($result['cpf'], $result['nome'], $result['email']);
 
             $sql = "SELECT * FROM telefones WHERE cpf_aluno = :cpf";
             $stmtTelefones = $this->connection->prepare($sql);
@@ -88,5 +80,14 @@ class AlunoRepositoryPdo implements AlunoRepository
         }
 
         return $alunos;
+    }
+
+    private function alunoHydrate(string $cpf, string $nome, string $email): Aluno
+    {
+        return new Aluno(
+            new CPF($cpf),
+            $nome,
+            new Email($email),
+        );
     }
 }
