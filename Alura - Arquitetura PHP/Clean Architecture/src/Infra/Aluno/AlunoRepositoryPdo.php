@@ -62,6 +62,22 @@ class AlunoRepositoryPdo implements AlunoRepository
 
     public function buscarTodos(): array
     {
-        //
+        $alunos = array();
+
+        $sql = "SELECT * FROM alunos ORDER BY nome, cpf";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $aluno = new Aluno(
+                new CPF($result['cpf']),
+                $result['nome'],
+                new Email($result['email']),
+            );
+
+            $alunos[] = $aluno;
+        }
+
+        return $alunos;
     }
 }

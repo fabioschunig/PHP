@@ -23,3 +23,6 @@ $alunoRepository->adicionar($aluno);
 
 $result = $alunoRepository->buscarPorCpf($cpf);
 print_r($result);
+
+$result = $alunoRepository->buscarTodos();
+print_r($result);
