@@ -84,15 +84,6 @@ class AlunoRepositoryPdo implements AlunoRepository
         return $alunos;
     }
 
-    private function alunoHydrate(string $cpf, string $nome, string $email): Aluno
-    {
-        return new Aluno(
-            new CPF($cpf),
-            $nome,
-            new Email($email),
-        );
-    }
-
     private function buscarAlunos(CPF|null $cpf): array
     {
         $sql =
