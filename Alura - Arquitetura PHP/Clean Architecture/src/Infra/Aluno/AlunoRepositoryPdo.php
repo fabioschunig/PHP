@@ -124,6 +124,16 @@ class AlunoRepositoryPdo implements AlunoRepository
     {
         $alunos = array();
 
+        $listaCpf = array_unique(array_column($dadosAlunos, 'cpf'));
+
+        foreach ($listaCpf as $cpf) {
+            $dadosCpf = array_filter(
+                $dadosAlunos,
+                fn ($dados) => $dados['cpf'] === $cpf,
+            );
+            $alunos[] = $this->mapearAluno($dadosCpf);
+        }
+
         return $alunos;
     }
 
