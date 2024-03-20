@@ -60,31 +60,10 @@ class AlunoRepositoryPdo implements AlunoRepository
 
     public function buscarTodos(): array
     {
-        $alunos = array();
-
-        $sql = "SELECT * FROM alunos ORDER BY nome, cpf";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-
-        while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $aluno = $this->alunoHydrate($result['cpf'], $result['nome'], $result['email']);
-
-            $sql = "SELECT * FROM telefones WHERE cpf_aluno = :cpf";
-            $stmtTelefones = $this->connection->prepare($sql);
-            $stmtTelefones->bindValue('cpf', $aluno->cpf(), \PDO::PARAM_STR);
-            $stmtTelefones->execute();
-
-            while ($resultTelefones = $stmtTelefones->fetch(\PDO::FETCH_ASSOC)) {
-                $aluno->adicionarTelefone($resultTelefones['ddd'], $resultTelefones['numero']);
-            }
-
-            $alunos[] = $aluno;
-        }
-
-        return $alunos;
+        return $this->buscarAlunos();
     }
 
-    private function buscarAlunos(CPF|null $cpf): array
+    private function buscarAlunos(CPF|null $cpf = null): array
     {
         $sql =
             "SELECT cpf, nome, email, ddd, numero as numero_telefone " .
