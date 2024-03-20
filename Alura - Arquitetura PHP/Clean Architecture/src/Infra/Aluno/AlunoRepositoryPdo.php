@@ -3,6 +3,7 @@
 namespace Alura\Arquitetura\Infra\Aluno;
 
 use Alura\Arquitetura\Dominio\Aluno\Aluno;
+use Alura\Arquitetura\Dominio\Aluno\AlunoNaoEncontrado;
 use Alura\Arquitetura\Dominio\Aluno\AlunoRepository;
 use Alura\Arquitetura\Dominio\Aluno\Telefone;
 use Alura\Arquitetura\Dominio\CPF;
@@ -90,5 +91,37 @@ class AlunoRepositoryPdo implements AlunoRepository
             $nome,
             new Email($email),
         );
+    }
+
+    private function buscarAlunos(CPF|null $cpf): array
+    {
+        $sql =
+            "SELECT cpf, nome, email, ddd, numero as numero_telefone " .
+            "FROM alunos " .
+            "LEFT JOIN telefones ON (telefones.cpf_aluno = alunos.cpf) ";
+
+        if ($cpf) {
+            $sql .= "WHERE alunos.cpf = :cpf;";
+        }
+
+        $stmt = $this->connection->prepare($sql);
+
+        if ($cpf) {
+            $stmt->bindValue("cpf", (string) $cpf);
+        }
+
+        $stmt->execute();
+
+        $dadosAlunos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        if (count($dadosAlunos) === 0) {
+            throw new AlunoNaoEncontrado($cpf);
+        }
+
+        return $this->mapearAlunos($dadosAlunos);
+    }
+
+    private function mapearAlunos(array $dadosAlunos): array
+    {
+        return array();
     }
 }
