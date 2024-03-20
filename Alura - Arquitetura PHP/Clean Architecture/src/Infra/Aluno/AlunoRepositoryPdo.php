@@ -38,22 +38,7 @@ class AlunoRepositoryPdo implements AlunoRepository
 
     public function buscarPorCpf(CPF $cpf): Aluno
     {
-        $sql = "SELECT * FROM alunos WHERE cpf = :cpf";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindValue('cpf', $cpf, \PDO::PARAM_STR);
-        $stmt->execute();
-        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-        $aluno = $this->alunoHydrate($result['cpf'], $result['nome'], $result['email']);
-
-        $sql = "SELECT * FROM telefones WHERE cpf_aluno = :cpf";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindValue('cpf', $cpf, \PDO::PARAM_STR);
-        $stmt->execute();
-
-        while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $aluno->adicionarTelefone($result['ddd'], $result['numero']);
-        }
+        $aluno = $this->buscarAlunos($cpf)[0];
 
         return $aluno;
     }
