@@ -94,7 +94,7 @@ class AlunoRepositoryPdo implements AlunoRepository
 
     private function mapearAluno(array $dadosAluno): Aluno
     {
-        $primeiraLinha = $dadosAluno[0];
+        $primeiraLinha = $dadosAluno[array_key_first($dadosAluno)];
         $aluno = Aluno::comCPFNomeEEmail(
             $primeiraLinha['cpf'],
             $primeiraLinha['nome'],
