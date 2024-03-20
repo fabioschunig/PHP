@@ -122,6 +122,25 @@ class AlunoRepositoryPdo implements AlunoRepository
 
     private function mapearAlunos(array $dadosAlunos): array
     {
-        return array();
+        $alunos = array();
+
+        return $alunos;
+    }
+
+    private function mapearAluno(array $dadosAluno): Aluno
+    {
+        $primeiraLinha = $dadosAluno[0];
+        $aluno = Aluno::comCPFNomeEEmail(
+            $primeiraLinha['cpf'],
+            $primeiraLinha['nome'],
+            $primeiraLinha['email'],
+        );
+
+        $telefones = array_filter($dadosAluno, fn ($linha) => $linha['ddd'] !== null && $linha['numero_telefone'] !== null);
+        foreach ($telefones as $telefone) {
+            $aluno->adicionarTelefone($telefone['ddd'], $telefone['numero_telefone']);
+        }
+
+        return $aluno;
     }
 }
