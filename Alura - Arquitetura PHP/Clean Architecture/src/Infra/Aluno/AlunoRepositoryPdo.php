@@ -23,13 +23,14 @@ class AlunoRepositoryPdo implements AlunoRepository
         $stmt->bindValue('email', $aluno->email());
         $stmt->execute();
 
+        $sql = "INSERT INTO telefones VALUES (:ddd, :numero, :cpf_aluno);";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue('cpf_aluno', $aluno->cpf());
+
         /** @var Telefone $telefone */
         foreach ($aluno->telefones() as $telefone) {
-            $sql = "INSERT INTO telefones VALUES (:ddd, :numero, :cpf_aluno);";
-            $stmt = $this->connection->prepare($sql);
             $stmt->bindValue('ddd', $telefone->ddd());
             $stmt->bindValue('numero', $telefone->numero());
-            $stmt->bindValue('cpf_aluno', $aluno->cpf());
             $stmt->execute();
         }
     }
