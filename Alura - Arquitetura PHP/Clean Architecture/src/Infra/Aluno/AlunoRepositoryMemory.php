@@ -20,5 +20,6 @@ class AlunoRepositoryMemory implements AlunoRepository
 
     public function buscarTodos(): array
     {
+        return $this->alunos;
     }
 }
