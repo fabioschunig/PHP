@@ -8,7 +8,7 @@ class CifradorDeSenhaPhp implements CifradorDeSenha
 {
     public function cifrar(string $senha): string
     {
-        return password_hash($senha, PASSWORD_ARGON2ID);
+        return password_hash($senha, PASSWORD_DEFAULT);
     }
 
     public function verificar(string $senhaEmText, string $senhaCifrada): bool
