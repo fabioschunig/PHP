@@ -1,6 +1,6 @@
 <?php
 
-namespace Alura\Arquitetura\Testes;
+namespace Alura\Arquitetura\Testes\Dominio;
 
 use Alura\Arquitetura\Dominio\CPF;
 use PHPUnit\Framework\TestCase;
