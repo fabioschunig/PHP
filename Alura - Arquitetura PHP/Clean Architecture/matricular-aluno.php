@@ -1,5 +1,7 @@
 <?php
 
+use Alura\Arquitetura\Aplicacao\Aluno\MatricularAluno\MatricularAluno;
+use Alura\Arquitetura\Aplicacao\Aluno\MatricularAluno\MatricularAlunoDto;
 use Alura\Arquitetura\Dominio\Aluno\Aluno;
 use Alura\Arquitetura\Infra\Aluno\AlunoRepositoryMemory;
 
@@ -17,8 +19,16 @@ echo "E-mail: " . $email . PHP_EOL;
 echo "DDD: " . $ddd . PHP_EOL;
 echo "Número: " . $numero . PHP_EOL;
 
-$aluno = Aluno::comCPFNomeEEmail($cpf, $nome, $email)->adicionarTelefone($ddd, $numero);
 $repositorio = new AlunoRepositoryMemory();
+
+/*
+$aluno = Aluno::comCPFNomeEEmail($cpf, $nome, $email)->adicionarTelefone($ddd, $numero);
 $repositorio->adicionar($aluno);
 
 print_r($aluno);
+*/
+
+// using DTO
+$alunoDTO = new MatricularAlunoDto($cpf, $nome, $email);
+$matriculaAluno = new MatricularAluno($repositorio);
+$matriculaAluno->executar($alunoDTO);
