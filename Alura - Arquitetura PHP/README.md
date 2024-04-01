@@ -28,3 +28,11 @@ Design Patterns em PHP: padrões criacionais
 [Padrões Criacionais](https://cursos.alura.com.br/course/php-design-pattern-criacional)
 
 Código fonte dos exemplos: [Design Patterns - Creational](Design%20Patterns%20-%20Creational)
+
+---
+### Clean Architecture
+PHP e Clean Architecture: descomplicando arquitetura de software
+
+[Clean Architecture](https://cursos.alura.com.br/course/php-introducao-clean-achitecture)
+
+Código fonte dos exemplos: [Clean Architecture](Clean%20Architecture)
