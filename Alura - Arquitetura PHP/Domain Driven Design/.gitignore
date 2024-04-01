@@ -1,0 +1,8 @@
+# vendor dir
+/vendor
+
+# phpunit cache file
+.phpunit.result.cache
+
+# database file
+/database/*.sqlite
