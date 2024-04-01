@@ -36,3 +36,11 @@ PHP e Clean Architecture: descomplicando arquitetura de software
 [Clean Architecture](https://cursos.alura.com.br/course/php-introducao-clean-achitecture)
 
 Código fonte dos exemplos: [Clean Architecture](Clean%20Architecture)
+
+---
+### Domain Driven Design
+PHP e Domain Driven Design: apresentando os conceitos
+
+[Domain Driven Design](https://cursos.alura.com.br/course/domain-driven-design-php)
+
+Código fonte dos exemplos: [Domain Driven Design](Domain%20Driven%20Design)
