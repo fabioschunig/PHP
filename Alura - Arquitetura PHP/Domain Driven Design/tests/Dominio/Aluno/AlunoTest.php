@@ -10,17 +10,23 @@ use PHPUnit\Framework\TestCase;
 
 class AlunoTest extends TestCase
 {
+    private Aluno $aluno;
+
+    protected function setUp(): void
+    {
+        $this->aluno = new Aluno(
+            $this->createStub(CPF::class),
+            '',
+            $this->createStub(Email::class),
+        );
+    }
+
     public function testAdicionarTelefoneAbaixoDoMaximo()
     {
-        $aluno = new Aluno(
-            new CPF('123.456.789-10'),
-            'Teste telefone',
-            new Email('teste@email.com'),
-        );
+        $this->aluno->adicionarTelefone('11', '111111111');
+        $this->aluno->adicionarTelefone('99', '999999999');
 
-        $aluno->adicionarTelefone('11', '111111111');
-        $aluno->adicionarTelefone('99', '999999999');
-        $this->assertSame(2, count($aluno->telefones()));
+        $this->assertSame(2, count($this->aluno->telefones()));
     }
 
     public function testAdicionarTelefoneAcimaDoMaximo()
@@ -28,14 +34,8 @@ class AlunoTest extends TestCase
         $this->expectException(MaximoTelefonesAtingido::class);
         $this->expectExceptionMessage("Somente é permitido o máximo de 2 telefones por aluno");
 
-        $aluno = new Aluno(
-            new CPF('123.456.789-10'),
-            'Teste telefone',
-            new Email('teste@email.com'),
-        );
-
-        $aluno->adicionarTelefone('11', '111111111');
-        $aluno->adicionarTelefone('55', '555555555');
-        $aluno->adicionarTelefone('99', '999999999');
+        $this->aluno->adicionarTelefone('11', '111111111');
+        $this->aluno->adicionarTelefone('55', '555555555');
+        $this->aluno->adicionarTelefone('99', '999999999');
     }
 }
