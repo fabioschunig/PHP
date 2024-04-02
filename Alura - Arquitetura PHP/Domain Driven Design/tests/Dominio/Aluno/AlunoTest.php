@@ -26,7 +26,7 @@ class AlunoTest extends TestCase
         $this->aluno->adicionarTelefone('11', '111111111');
         $this->aluno->adicionarTelefone('99', '999999999');
 
-        $this->assertSame(2, count($this->aluno->telefones()));
+        $this->assertCount(2, $this->aluno->telefones());
     }
 
     public function testAdicionarTelefoneAcimaDoMaximo()
