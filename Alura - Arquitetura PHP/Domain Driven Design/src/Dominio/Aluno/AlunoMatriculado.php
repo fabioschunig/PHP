@@ -20,4 +20,9 @@ class AlunoMatriculado implements Evento
     {
         return $this->momento;
     }
+
+    public function cpfAluno(): CPF
+    {
+        return $this->cpfAluno;
+    }
 }
