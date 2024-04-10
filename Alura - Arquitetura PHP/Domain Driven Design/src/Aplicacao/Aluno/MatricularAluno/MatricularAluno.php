@@ -5,7 +5,6 @@ namespace Alura\Arquitetura\Aplicacao\Aluno\MatricularAluno;
 use Alura\Arquitetura\Dominio\Aluno\Aluno;
 use Alura\Arquitetura\Dominio\Aluno\AlunoMatriculado;
 use Alura\Arquitetura\Dominio\Aluno\AlunoRepository;
-use Alura\Arquitetura\Dominio\Aluno\LogAlunoMatriculado;
 use Alura\Arquitetura\Dominio\PublicadorDeEvento;
 
 class MatricularAluno
@@ -13,11 +12,10 @@ class MatricularAluno
     private AlunoRepository $repository;
     private PublicadorDeEvento $publicador;
 
-    public function __construct(AlunoRepository $repository)
+    public function __construct(AlunoRepository $repository, PublicadorDeEvento $publicador)
     {
         $this->repository = $repository;
-        $this->publicador = new PublicadorDeEvento();
-        $this->publicador->adicionarOuvinte(new LogAlunoMatriculado());
+        $this->publicador = $publicador;
     }
 
     public function executar(MatricularAlunoDto $dados)
