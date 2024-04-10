@@ -11,8 +11,9 @@ class PublicadorDeEvento
         $this->ouvintes[] = $ouvinte;
     }
 
-    public function publicar(Evento $evento)
+    public function publicar(Evento $evento): void
     {
+        /** @var OuvinteDeEvento $ouvinte */
         foreach ($this->ouvintes as $ouvinte) {
             $ouvinte->processa($evento);
         }
