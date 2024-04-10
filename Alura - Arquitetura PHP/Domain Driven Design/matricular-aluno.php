@@ -3,6 +3,8 @@
 use Alura\Arquitetura\Aplicacao\Aluno\MatricularAluno\MatricularAluno;
 use Alura\Arquitetura\Aplicacao\Aluno\MatricularAluno\MatricularAlunoDto;
 use Alura\Arquitetura\Dominio\Aluno\Aluno;
+use Alura\Arquitetura\Dominio\Aluno\LogAlunoMatriculado;
+use Alura\Arquitetura\Dominio\PublicadorDeEvento;
 use Alura\Arquitetura\Infra\Aluno\AlunoRepositoryMemory;
 
 require 'vendor/autoload.php';
@@ -28,7 +30,11 @@ $repositorio->adicionar($aluno);
 print_r($aluno);
 */
 
+// listener
+$publicador = new PublicadorDeEvento();
+$publicador->adicionarOuvinte(new LogAlunoMatriculado());
+
 // using DTO
 $alunoDTO = new MatricularAlunoDto($cpf, $nome, $email);
-$matriculaAluno = new MatricularAluno($repositorio);
+$matriculaAluno = new MatricularAluno($repositorio, $publicador);
 $matriculaAluno->executar($alunoDTO);
