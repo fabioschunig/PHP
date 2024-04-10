@@ -2,9 +2,13 @@
 
 namespace Alura\Arquitetura\Dominio\Aluno;
 
-class LogAlunoMatriculado
+use Alura\Arquitetura\Dominio\Evento;
+use Alura\Arquitetura\Dominio\OuvinteDeEvento;
+
+class LogAlunoMatriculado extends OuvinteDeEvento
 {
-    public function reageAo(AlunoMatriculado $alunoMatriculado): void
+    /** @param AlunoMatriculado $alunoMatriculado */
+    public function reageAo(Evento $alunoMatriculado): void
     {
         fprintf(
             STDERR,
@@ -12,5 +16,10 @@ class LogAlunoMatriculado
             (string) $alunoMatriculado->cpfAluno(),
             $alunoMatriculado->momento()->format('d/m/Y'),
         );
+    }
+
+    public function sabeProcessar(Evento $evento): bool
+    {
+        return $evento instanceof AlunoMatriculado;
     }
 }
