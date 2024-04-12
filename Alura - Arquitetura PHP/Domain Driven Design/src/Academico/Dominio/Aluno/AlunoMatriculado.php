@@ -1,9 +1,9 @@
 <?php
 
-namespace Alura\Arquitetura\Dominio\Aluno;
+namespace Alura\Arquitetura\Academico\Dominio\Aluno;
 
-use Alura\Arquitetura\Dominio\CPF;
-use Alura\Arquitetura\Dominio\Evento;
+use Alura\Arquitetura\Academico\Dominio\CPF;
+use Alura\Arquitetura\Academico\Dominio\Evento;
 
 class AlunoMatriculado implements Evento
 {

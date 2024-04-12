@@ -1,13 +1,13 @@
 <?php
 
-namespace Alura\Arquitetura\Infra\Indicacao;
+namespace Alura\Arquitetura\Academico\Infra\Indicacao;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-use Alura\Arquitetura\Aplicacao\Indicacao\EnviaEmailIndicacao;
-use Alura\Arquitetura\Dominio\Aluno\Aluno;
+use Alura\Arquitetura\Academico\Aplicacao\Indicacao\EnviaEmailIndicacao;
+use Alura\Arquitetura\Academico\Dominio\Aluno\Aluno;
 
 class EnviaEmailIndicacaoPhpMailer implements EnviaEmailIndicacao
 {

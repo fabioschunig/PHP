@@ -1,8 +1,8 @@
 <?php
 
-namespace Alura\Arquitetura\Aplicacao\Indicacao;
+namespace Alura\Arquitetura\Academico\Aplicacao\Indicacao;
 
-use Alura\Arquitetura\Dominio\Aluno\Aluno;
+use Alura\Arquitetura\Academico\Dominio\Aluno\Aluno;
 
 interface EnviaEmailIndicacao
 {

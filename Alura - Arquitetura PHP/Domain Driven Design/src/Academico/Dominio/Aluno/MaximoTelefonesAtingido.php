@@ -1,6 +1,6 @@
 <?php
 
-namespace Alura\Arquitetura\Dominio\Aluno;
+namespace Alura\Arquitetura\Academico\Dominio\Aluno;
 
 class MaximoTelefonesAtingido extends \DomainException
 {

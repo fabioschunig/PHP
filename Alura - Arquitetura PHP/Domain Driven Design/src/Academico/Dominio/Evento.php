@@ -1,6 +1,6 @@
 <?php
 
-namespace Alura\Arquitetura\Dominio;
+namespace Alura\Arquitetura\Academico\Dominio;
 
 interface Evento
 {

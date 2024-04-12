@@ -1,8 +1,8 @@
 <?php
 
-namespace Alura\Arquitetura\Dominio\Aluno;
+namespace Alura\Arquitetura\Academico\Dominio\Aluno;
 
-use Alura\Arquitetura\Dominio\CPF;
+use Alura\Arquitetura\Academico\Dominio\CPF;
 
 class AlunoNaoEncontrado extends \DomainException
 {
