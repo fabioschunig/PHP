@@ -1,9 +1,9 @@
 <?php
 
-use Alura\Arquitetura\Dominio\Aluno\Aluno;
-use Alura\Arquitetura\Dominio\CPF;
-use Alura\Arquitetura\Dominio\Email;
-use Alura\Arquitetura\Infra\Aluno\AlunoRepositoryPdo;
+use Alura\Arquitetura\Academico\Dominio\Aluno\Aluno;
+use Alura\Arquitetura\Academico\Dominio\CPF;
+use Alura\Arquitetura\Academico\Dominio\Email;
+use Alura\Arquitetura\Academico\Infra\Aluno\AlunoRepositoryPdo;
 
 require __DIR__ . '/vendor/autoload.php';
 

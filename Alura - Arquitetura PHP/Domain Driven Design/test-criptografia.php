@@ -1,7 +1,7 @@
 <?php
 
-use Alura\Arquitetura\Infra\Aluno\CifradorDeSenhaMd5;
-use Alura\Arquitetura\Infra\Aluno\CifradorDeSenhaPhp;
+use Alura\Arquitetura\Academico\Infra\Aluno\CifradorDeSenhaMd5;
+use Alura\Arquitetura\Academico\Infra\Aluno\CifradorDeSenhaPhp;
 
 require __DIR__ . '/vendor/autoload.php';
 

@@ -2,10 +2,12 @@
 
 namespace Alura\Arquitetura\Testes\Aplicacao\Aluno;
 
-use Alura\Arquitetura\Aplicacao\Aluno\MatricularAluno\MatricularAluno;
-use Alura\Arquitetura\Aplicacao\Aluno\MatricularAluno\MatricularAlunoDto;
-use Alura\Arquitetura\Dominio\CPF;
-use Alura\Arquitetura\Infra\Aluno\AlunoRepositoryMemory;
+use Alura\Arquitetura\Academico\Aplicacao\Aluno\MatricularAluno\MatricularAluno;
+use Alura\Arquitetura\Academico\Aplicacao\Aluno\MatricularAluno\MatricularAlunoDto;
+use Alura\Arquitetura\Academico\Dominio\Aluno\LogAlunoMatriculado;
+use Alura\Arquitetura\Academico\Dominio\CPF;
+use Alura\Arquitetura\Academico\Dominio\PublicadorDeEvento;
+use Alura\Arquitetura\Academico\Infra\Aluno\AlunoRepositoryMemory;
 use PHPUnit\Framework\TestCase;
 
 class MatricularAlunoTest extends TestCase
@@ -18,8 +20,12 @@ class MatricularAlunoTest extends TestCase
             'teste@email.com',
         );
 
+        // listener
+        $publicador = new PublicadorDeEvento();
+        $publicador->adicionarOuvinte(new LogAlunoMatriculado());
+
         $repositorioAluno = new AlunoRepositoryMemory();
-        $useCase = new MatricularAluno($repositorioAluno);
+        $useCase = new MatricularAluno($repositorioAluno, $publicador);
         $useCase->executar($dadosAluno);
 
         $aluno = $repositorioAluno->buscarPorCpf(new CPF('123.456.789-10'));
