@@ -1,8 +1,8 @@
 <?php
 
-namespace Alura\Arquitetura\Dominio\Selo;
+namespace Alura\Arquitetura\Gamificacao\Dominio\Selo;
 
-use Alura\Arquitetura\Dominio\CPF;
+use Alura\Arquitetura\Academico\Dominio\CPF;
 
 interface SeloRepository
 {
