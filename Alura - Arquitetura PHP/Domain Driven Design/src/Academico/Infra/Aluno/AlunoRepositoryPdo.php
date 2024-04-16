@@ -6,7 +6,7 @@ use Alura\Arquitetura\Academico\Dominio\Aluno\Aluno;
 use Alura\Arquitetura\Academico\Dominio\Aluno\AlunoNaoEncontrado;
 use Alura\Arquitetura\Academico\Dominio\Aluno\AlunoRepository;
 use Alura\Arquitetura\Academico\Dominio\Aluno\Telefone;
-use Alura\Arquitetura\Academico\Dominio\CPF;
+use Alura\Arquitetura\Shared\Dominio\CPF;
 use Alura\Arquitetura\Academico\Dominio\Email;
 
 class AlunoRepositoryPdo implements AlunoRepository

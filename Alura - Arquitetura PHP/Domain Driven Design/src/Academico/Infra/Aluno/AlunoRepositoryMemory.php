@@ -5,7 +5,7 @@ namespace Alura\Arquitetura\Academico\Infra\Aluno;
 use Alura\Arquitetura\Academico\Dominio\Aluno\Aluno;
 use Alura\Arquitetura\Academico\Dominio\Aluno\AlunoNaoEncontrado;
 use Alura\Arquitetura\Academico\Dominio\Aluno\AlunoRepository;
-use Alura\Arquitetura\Academico\Dominio\CPF;
+use Alura\Arquitetura\Shared\Dominio\CPF;
 
 class AlunoRepositoryMemory implements AlunoRepository
 {
