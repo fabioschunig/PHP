@@ -1,7 +1,7 @@
 <?php
 
 use Alura\Arquitetura\Academico\Dominio\Aluno\Aluno;
-use Alura\Arquitetura\Academico\Dominio\CPF;
+use Alura\Arquitetura\Shared\Dominio\CPF;
 use Alura\Arquitetura\Academico\Dominio\Email;
 use Alura\Arquitetura\Academico\Infra\Aluno\AlunoRepositoryPdo;
 
