@@ -2,10 +2,9 @@
 
 use Alura\Arquitetura\Academico\Aplicacao\Aluno\MatricularAluno\MatricularAluno;
 use Alura\Arquitetura\Academico\Aplicacao\Aluno\MatricularAluno\MatricularAlunoDto;
-use Alura\Arquitetura\Academico\Dominio\Aluno\Aluno;
 use Alura\Arquitetura\Academico\Dominio\Aluno\LogAlunoMatriculado;
-use Alura\Arquitetura\Academico\Dominio\PublicadorDeEvento;
 use Alura\Arquitetura\Academico\Infra\Aluno\AlunoRepositoryMemory;
+use Alura\Arquitetura\Shared\Dominio\Evento\PublicadorDeEvento;
 
 require 'vendor/autoload.php';
 

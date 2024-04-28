@@ -6,8 +6,8 @@ use Alura\Arquitetura\Academico\Aplicacao\Aluno\MatricularAluno\MatricularAluno;
 use Alura\Arquitetura\Academico\Aplicacao\Aluno\MatricularAluno\MatricularAlunoDto;
 use Alura\Arquitetura\Academico\Dominio\Aluno\LogAlunoMatriculado;
 use Alura\Arquitetura\Shared\Dominio\CPF;
-use Alura\Arquitetura\Academico\Dominio\PublicadorDeEvento;
 use Alura\Arquitetura\Academico\Infra\Aluno\AlunoRepositoryMemory;
+use Alura\Arquitetura\Shared\Dominio\Evento\PublicadorDeEvento;
 use PHPUnit\Framework\TestCase;
 
 class MatricularAlunoTest extends TestCase
