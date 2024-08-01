@@ -1,6 +1,6 @@
--- tabela `usuario`
-CREATE TABLE IF NOT EXISTS usuario (
+-- tabela `user`
+CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY,
     login TEXT NOT NULL,
-    senha TEXT
+    password TEXT
 );
