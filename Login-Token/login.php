@@ -22,6 +22,11 @@ if ($user === false) {
 // plain text password
 $password = '123456';
 
+// read arg from command line
+if (isset($argv[1])) {
+    $password = $argv[1];
+}
+
 $verify = password_verify($password, $user['password']);
 
 if (!$verify) {
