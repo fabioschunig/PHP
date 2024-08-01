@@ -17,4 +17,16 @@ if ($user === false) {
     exit;
 }
 
-echo $user['password'] . PHP_EOL;
+// echo $user['password'] . PHP_EOL;
+
+// plain text password
+$password = '123456';
+
+$verify = password_verify($password, $user['password']);
+
+if (!$verify) {
+    echo "Invalid password" . PHP_EOL;
+    exit;
+}
+
+echo "Password OK!" . PHP_EOL;
