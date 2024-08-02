@@ -1,7 +1,6 @@
 <?php
 
-$dbPath = 'sqlite:./database/database.sqlite';
-$pdo = new PDO($dbPath);
+require_once './connection.php';
 
 $login = 'test@email.com';
 
