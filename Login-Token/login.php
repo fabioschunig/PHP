@@ -4,7 +4,7 @@ require_once './connection.php';
 
 $login = 'test@email.com';
 
-$sql = 'SELECT id, password FROM user WHERE login = ?;';
+$sql = 'SELECT id, login, password FROM user WHERE login = ?;';
 $stm = $pdo->prepare($sql);
 $stm->bindValue(1, $login);
 $stm->execute();
@@ -34,3 +34,6 @@ if (!$verify) {
 }
 
 echo "Password OK!" . PHP_EOL;
+
+$hash = 'token:' . $user['login'];
+echo base64_encode($hash) . PHP_EOL;
