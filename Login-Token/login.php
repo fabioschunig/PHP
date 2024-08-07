@@ -33,7 +33,7 @@ if (!$verify) {
     exit;
 }
 
-echo "Password OK!" . PHP_EOL;
+// echo "Password OK!" . PHP_EOL;
 
 $hash = 'token:' . $user['login'];
-echo base64_encode($hash) . PHP_EOL;
+echo base64_encode($hash);
