@@ -4,6 +4,11 @@ require_once './connection.php';
 
 $login = 'test@email.com';
 
+// read e-mail from command line
+if (isset($argv[1])) {
+    $login = $argv[1];
+}
+
 $sql = 'SELECT id, login, password FROM user WHERE login = ?;';
 $stm = $pdo->prepare($sql);
 $stm->bindValue(1, $login);
@@ -22,8 +27,8 @@ if ($user === false) {
 $password = '123456';
 
 // read arg from command line
-if (isset($argv[1])) {
-    $password = $argv[1];
+if (isset($argv[2])) {
+    $password = $argv[2];
 }
 
 $verify = password_verify($password, $user['password']);
