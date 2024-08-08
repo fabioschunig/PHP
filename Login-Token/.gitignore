@@ -1,2 +1,5 @@
 # database file
 /database/*.sqlite
+
+# vendor dir
+/vendor
