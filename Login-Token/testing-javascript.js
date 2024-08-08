@@ -19,3 +19,8 @@ fetch('http://localhost:8080/token.php', {
 })
     .then(res => res.text())
     .then(user => console.log(user));
+
+// test for JWT token
+fetch('http://localhost:8080/jwt.php?email=test@email.com')
+    .then(res => res.text())
+    .then(token => console.log(token));
