@@ -14,7 +14,10 @@ Autenticação por Token | Dias de Dev
 
 Link: https://www.youtube.com/watch?v=MZetkcs2xIo
 
+
 ## Autenticação com JWT
 Autenticação com JWT | Dias de Dev
 
 Link: https://www.youtube.com/watch?v=B-7e-ZpIWAs
+
+JWT: https://jwt.io/
