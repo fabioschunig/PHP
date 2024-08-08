@@ -4,8 +4,18 @@ require_once './connection.php';
 
 $login = 'test@email.com';
 
+// read e-mail from command line
+if (isset($argv[1])) {
+    $login = $argv[1];
+}
+
 // insert with plain text password
 $password = '123456';
+
+// read e-mail from command line
+if (isset($argv[2])) {
+    $password = $argv[2];
+}
 
 // hash MD5 - not recommended anymore
 $hashMd5 = md5($password);
