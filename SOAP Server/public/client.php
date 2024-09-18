@@ -17,3 +17,25 @@ if (isset($_POST['number2'])) {
 
 <p>Number 1: <?= $number1 ?></p>
 <p>Number 2: <?= $number2 ?></p>
+
+<?php
+
+try {
+    $client = new SoapClient('http://localhost:8081/calculator.wsdl');
+    $result = $client->addNumbers($number1, $number2);
+} catch (\Throwable $th) {
+    echo "Error: " . $th->getMessage();
+    throw $th;
+}
+
+/*
+echo "Last SOAP request: ";
+var_dump($client->__getLastRequest());
+
+echo "Last SOAP response: ";
+var_dump($client->__getLastResponse());
+*/
+
+?>
+
+<p>Sum: <?= $result ?></p>
