@@ -1,15 +1,8 @@
 <?php
 
-class NewOperation
-{
-    public function NewOperation() {}
-}
+require_once 'Calculator.php';
 
-ini_set("soap.wsdl_cache_enabled", "0");
-$server = new SOAPServer('http://localhost:9080/soap-websiteservice-wsdl/CalculatorService.wsdl', array(
-    'soap_version' => SOAP_1_2,
-    'style' => SOAP_RPC,
-    'use' => SOAP_LITERAL
-));
-$server->setClass('NewOperation');
+$options = array('uri' => 'urn:Calculator');
+$server = new SoapServer('calculator.wsdl', $options);
+$server->setClass('Calculator');
 $server->handle();
