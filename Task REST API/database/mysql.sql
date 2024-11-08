@@ -16,5 +16,22 @@ CREATE TABLE `task` (
 insert into `task` (`description`, `tags`) values ('Task 1', 'to-do'); 
 insert into `task` (`description`, `tags`) values ('Task 2', 'doing');
 insert into `task` (`description`, `tags`) values ('Task 3', 'done');
+insert into `task` (`description`, `tags`) values ('Task 4', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 5', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 6', 'done');
+insert into `task` (`description`, `tags`) values ('Task 7', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 8', 'doing');
+insert into `task` (`description`, `tags`) values ('Task 9', 'doing');
+insert into `task` (`description`, `tags`) values ('Task 10', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 11', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 12', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 13', 'doing');
+insert into `task` (`description`, `tags`) values ('Task 14', 'doing');
+insert into `task` (`description`, `tags`) values ('Task 15', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 16', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 17', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 18', 'to-do');
+insert into `task` (`description`, `tags`) values ('Task 19', 'done');
+insert into `task` (`description`, `tags`) values ('Task 20', 'done');
 
 commit;
