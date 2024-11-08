@@ -11,3 +11,10 @@ CREATE TABLE `task` (
   `status` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- sample data
+insert into `task` (`description`, `tags`) values ('Task 1', 'to-do'); 
+insert into `task` (`description`, `tags`) values ('Task 2', 'doing');
+insert into `task` (`description`, `tags`) values ('Task 3', 'done');
+
+commit;
