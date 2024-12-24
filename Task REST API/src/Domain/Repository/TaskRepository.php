@@ -1,6 +1,6 @@
 <?php
 
-namespace TaskRestApi\Repository;
+namespace TaskRestApi\Domain\Repository;
 
 interface TaskRepository
 {

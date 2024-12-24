@@ -1,5 +1,5 @@
 <?php
 
-namespace TaskRestApi\Model;
+namespace TaskRestApi\Domain\Model;
 
 class Task {}

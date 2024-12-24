@@ -2,5 +2,5 @@
 
 require_once 'vendor/autoload.php';
 
-$task = new \TaskRestApi\Model\Task;
+$task = new \TaskRestApi\Domain\Model\Task;
 var_dump($task);
