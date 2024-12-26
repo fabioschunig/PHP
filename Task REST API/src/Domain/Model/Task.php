@@ -16,4 +16,24 @@ class Task
         $this->tags = $tags;
         $this->status = $status;
     }
+
+    public function id(): int|null
+    {
+        return $this->id;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    public function tags(): string
+    {
+        return $this->tags;
+    }
+
+    public function status(): string
+    {
+        return $this->status;
+    }
 }
