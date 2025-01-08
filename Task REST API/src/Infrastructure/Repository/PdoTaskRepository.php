@@ -2,8 +2,9 @@
 
 namespace TaskRestApi\Infrastructure\Repository;
 
-use TaskRestApi\Domain\Repository\TaskRepository;
 use PDO;
+use TaskRestApi\Domain\Repository\TaskRepository;
+use TaskRestApi\Domain\Model\Task;
 
 class PdoTaskRepository implements TaskRepository
 {
@@ -16,6 +17,23 @@ class PdoTaskRepository implements TaskRepository
 
     public function allTasks(): array
     {
-        return array();
+        $sqlQuery = 'SELECT * FROM task;';
+        $stmt = $this->connection->query($sqlQuery);
+
+        $taskDataList = $stmt->fetchAll();
+        $taskList = [];
+
+        foreach ($taskDataList as $taskData) {
+            $task = new Task(
+                $taskData['id'],
+                $taskData['description'],
+                $taskData['tags'],
+                $taskData['id'],
+            );
+
+            $taskList[] = $task;
+        }
+
+        return $taskList;
     }
 }
