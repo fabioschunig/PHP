@@ -9,7 +9,9 @@ echo $task->description() . "\n";
 echo $task->tags() . "\n";
 echo $task->status() . "\n";
 
-$taskRepository = new \TaskRestApi\Infrastructure\Repository\PdoTaskRepository;
+$pdo = \TaskRestApi\Infrastructure\Persistence\PdoConnectionCreator::createConnection();
+
+$taskRepository = new \TaskRestApi\Infrastructure\Repository\PdoTaskRepository($pdo);
 var_dump($taskRepository);
 
 $tasks = $taskRepository->allTasks();
